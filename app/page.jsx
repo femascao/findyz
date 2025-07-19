@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import { Briefcase, Lock, Search, Banknote, Users, Handshake, Shuffle } from "lucide-react";
 
 export default function Page() {
   return (
@@ -33,10 +34,10 @@ export default function Page() {
       <section className="px-6 py-16 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-blue-900">Como Funciona</h2>
         <ul className="mt-6 space-y-3 text-lg text-gray-800">
-          <li>🔍 Publique a sua empresa com avaliação automática e confidencialidade garantida</li>
-          <li>📊 Obtenha apoio em due diligence, análise financeira e estruturação jurídica</li>
-          <li>🤝 Negocie diretamente com compradores qualificados dentro da plataforma</li>
-          <li>💼 Conclua a venda com apoio de soluções de pagamento seguras, investidores e financiamento personalizado</li>
+          <li className="flex items-start gap-2"><Search className="text-violet-700 mt-1" size={20} /> Publique a sua empresa com avaliação automática e confidencialidade garantida</li>
+          <li className="flex items-start gap-2"><Briefcase className="text-violet-700 mt-1" size={20} /> Obtenha apoio em due diligence, análise financeira e estruturação jurídica</li>
+          <li className="flex items-start gap-2"><Handshake className="text-violet-700 mt-1" size={20} /> Negocie diretamente com compradores qualificados dentro da plataforma</li>
+          <li className="flex items-start gap-2"><Banknote className="text-violet-700 mt-1" size={20} /> Conclua a venda com apoio de soluções de pagamento seguras, investidores e financiamento personalizado</li>
         </ul>
       </section>
 
@@ -47,12 +48,12 @@ export default function Page() {
           Oferecemos soluções financeiras e parcerias estratégicas para facilitar o fecho do negócio — com segurança, flexibilidade e agilidade.
         </p>
         <ul className="mt-8 space-y-4 text-lg text-gray-800">
-          <li>🔒 <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
-          <li>👥 <strong>Busca por investidores</strong> — conectamos com investidores individuais e fundos interessados em aquisições conjuntas</li>
-          <li>🤝 <strong>Busca por sócios estratégicos</strong> — encontre parceiros que complementam capital e experiência</li>
-          <li>🏦 <strong>Financiamento bancário</strong> — parceria com bancos portugueses para facilitar crédito empresarial</li>
-          <li>💼 <strong>Leveraged Buyout</strong> — estrutura em que a própria empresa adquirida financia parte da compra</li>
-          <li>🔀 <strong>Modelo híbrido</strong> — misture diferentes fontes e simule a melhor estrutura para o seu caso</li>
+          <li className="flex items-start gap-2"><Lock className="text-violet-700 mt-1" size={20} /> <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
+          <li className="flex items-start gap-2"><Users className="text-violet-700 mt-1" size={20} /> <strong>Busca por investidores</strong> — conectamos com investidores individuais e fundos interessados em aquisições conjuntas</li>
+          <li className="flex items-start gap-2"><Handshake className="text-violet-700 mt-1" size={20} /> <strong>Busca por sócios estratégicos</strong> — encontre parceiros que complementam capital e experiência</li>
+          <li className="flex items-start gap-2"><Banknote className="text-violet-700 mt-1" size={20} /> <strong>Financiamento bancário</strong> — parceria com bancos portugueses para facilitar crédito empresarial</li>
+          <li className="flex items-start gap-2"><Briefcase className="text-violet-700 mt-1" size={20} /> <strong>Leveraged Buyout</strong> — estrutura em que a própria empresa adquirida financia parte da compra</li>
+          <li className="flex items-start gap-2"><Shuffle className="text-violet-700 mt-1" size={20} /> <strong>Modelo híbrido</strong> — misture diferentes fontes e simule a melhor estrutura para o seu caso</li>
         </ul>
       </section>
 
