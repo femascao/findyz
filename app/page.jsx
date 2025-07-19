@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { Briefcase, Lock, Search, Banknote, Users, UserCheck, Shuffle } from "lucide-react";
+import { Briefcase, Lock, Search, Banknote, Users, Shuffle, UserPlus } from "lucide-react";
 
 export default function Page() {
   return (
@@ -36,7 +36,7 @@ export default function Page() {
         <ul className="mt-6 space-y-3 text-lg text-gray-800">
           <li className="flex items-start gap-2"><Search className="text-violet-700 mt-1" size={20} /> Publique a sua empresa com avaliação automática e confidencialidade garantida</li>
           <li className="flex items-start gap-2"><Briefcase className="text-violet-700 mt-1" size={20} /> Obtenha apoio em due diligence, análise financeira e estruturação jurídica</li>
-          <li className="flex items-start gap-2"><Handshake className="text-violet-700 mt-1" size={20} /> Negocie diretamente com compradores qualificados dentro da plataforma</li>
+          <li className="flex items-start gap-2"><UserPlus className="text-violet-700 mt-1" size={20} /> Negocie diretamente com compradores qualificados dentro da plataforma</li>
           <li className="flex items-start gap-2"><Banknote className="text-violet-700 mt-1" size={20} /> Conclua a venda com apoio de soluções de pagamento seguras, investidores e financiamento personalizado</li>
         </ul>
       </section>
@@ -50,7 +50,7 @@ export default function Page() {
         <ul className="mt-8 space-y-4 text-lg text-gray-800">
           <li className="flex items-start gap-2"><Lock className="text-violet-700 mt-1" size={20} /> <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
           <li className="flex items-start gap-2"><Users className="text-violet-700 mt-1" size={20} /> <strong>Busca por investidores</strong> — conectamos com investidores individuais e fundos interessados em aquisições conjuntas</li>
-          <li className="flex items-start gap-2"><Handshake className="text-violet-700 mt-1" size={20} /> <strong>Busca por sócios estratégicos</strong> — encontre parceiros que complementam capital e experiência</li>
+          <li className="flex items-start gap-2"><UserPlus className="text-violet-700 mt-1" size={20} /> <strong>Busca por sócios estratégicos</strong> — encontre parceiros que complementam capital e experiência</li>
           <li className="flex items-start gap-2"><Banknote className="text-violet-700 mt-1" size={20} /> <strong>Financiamento bancário</strong> — parceria com bancos portugueses para facilitar crédito empresarial</li>
           <li className="flex items-start gap-2"><Briefcase className="text-violet-700 mt-1" size={20} /> <strong>Leveraged Buyout</strong> — estrutura em que a própria empresa adquirida financia parte da compra</li>
           <li className="flex items-start gap-2"><Shuffle className="text-violet-700 mt-1" size={20} /> <strong>Modelo híbrido</strong> — misture diferentes fontes e simule a melhor estrutura para o seu caso</li>
@@ -100,3 +100,4 @@ export default function Page() {
     </div>
   );
 }
+
