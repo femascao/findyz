@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from "next/image";
@@ -16,15 +15,15 @@ export default function Page() {
             height={60}
           />
         </div>
-        <h1 className="text-5xl font-bold leading-tight">
-          1º marketplace digital de compra e venda de empresas em Portugal
+        <h1 className="text-5xl font-bold leading-tight text-blue-900">
+          O 1º ecossistema completo de M&A digital em Portugal
         </h1>
-        <p className="mt-4 text-xl text-gray-600">
-          Através da inovação, garantimos que o seu legado seja o ponto de partida para um novo sucesso.
+        <p className="mt-4 text-xl text-gray-700">
+          Usamos tecnologia para transformar a sucessão empresarial: simplificamos, financiamos e conectamos oportunidades reais com novos empreendedores.
         </p>
         <a
           href="#cadastro"
-          className="mt-8 inline-block bg-blue-600 text-white text-lg px-8 py-3 rounded-xl shadow-lg hover:bg-blue-700 transition"
+          className="mt-8 inline-block bg-violet-700 text-white text-lg px-8 py-3 rounded-xl shadow-lg hover:bg-violet-800 transition"
         >
           Cadastrar para o pré-lançamento
         </a>
@@ -32,20 +31,20 @@ export default function Page() {
 
       {/* How It Works */}
       <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center">Como Funciona</h2>
-        <ul className="mt-6 space-y-3 text-lg text-gray-700">
-          <li>🔍 Liste sua empresa com avaliação automática</li>
-          <li>📑 Receba suporte de due diligence e análise de risco</li>
-          <li>🤝 Negocie diretamente na plataforma com segurança</li>
-          <li>💸 Acesse investidores e financie a aquisição do negócio</li>
+        <h2 className="text-3xl font-bold text-center text-blue-900">Como Funciona</h2>
+        <ul className="mt-6 space-y-3 text-lg text-gray-800">
+          <li>🔍 Publique a sua empresa com avaliação automática e confidencialidade garantida</li>
+          <li>📊 Obtenha apoio em due diligence, análise financeira e estruturação jurídica</li>
+          <li>🤝 Negocie diretamente com compradores qualificados dentro da plataforma</li>
+          <li>💼 Conclua a venda com apoio de soluções de pagamento seguras, investidores e financiamento personalizado</li>
         </ul>
       </section>
 
       {/* Financing and Payment */}
-      <section className="px-6 py-16 bg-white max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center">Findyz Capital Hub</h2>
+      <section className="px-6 py-16 bg-gray-100 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-blue-900">Findyz Capital Hub</h2>
         <p className="mt-4 text-center text-gray-700 text-lg">
-          A Findyz oferece soluções seguras e flexíveis para concluir a sua aquisição com confiança e estrutura.
+          Oferecemos soluções financeiras e parcerias estratégicas para facilitar o fecho do negócio — com segurança, flexibilidade e agilidade.
         </p>
         <ul className="mt-8 space-y-4 text-lg text-gray-800">
           <li>🔒 <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
@@ -58,8 +57,8 @@ export default function Page() {
       </section>
 
       {/* Formulário */}
-      <section id="cadastro" className="px-6 py-16 bg-gray-50">
-        <h3 className="text-2xl font-semibold text-center mb-6">
+      <section id="cadastro" className="px-6 py-16 bg-violet-50">
+        <h3 className="text-2xl font-semibold text-center mb-6 text-violet-900">
           Quer vender ou comprar uma empresa?
         </h3>
         <form
@@ -100,6 +99,7 @@ export default function Page() {
     </div>
   );
 }
+
 
 
 
