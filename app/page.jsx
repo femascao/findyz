@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { Briefcase, Lock, Search, Banknote, Users, Handshake, Shuffle } from "lucide-react";
+import { Briefcase, Lock, Search, Banknote, Users, UserCheck, Shuffle } from "lucide-react";
 
 export default function Page() {
   return (
