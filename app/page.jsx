@@ -15,7 +15,7 @@ export default function Page() {
 
       {/* Header */}
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50">
-        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center">
           <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={0} height={0} sizes="100vw" className="w-32 h-auto" />
           <nav className="space-x-6 text-violet-900 font-medium">
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
