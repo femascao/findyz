@@ -15,7 +15,7 @@ export default function Page() {
 
       {/* Header */}
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
           <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={120} height={50} />
           <nav className="space-x-6 text-blue-900 font-medium">
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
@@ -73,64 +73,48 @@ export default function Page() {
           </ul>
         </section>
 
-        {/* Análise com IA */}
+        {/* NOVO BLOCO — Seção “Análise com IA” */}
         <section id="analise-ia" className="px-6 py-16 bg-blue-50">
           <h2 className="text-3xl font-bold text-center text-blue-900">Análise inteligente com IA</h2>
           <p className="mt-4 text-center text-gray-700 text-lg max-w-2xl mx-auto">
             Envie os dados financeiros da sua empresa e receba uma análise automatizada de valuation,
             riscos, atratividade e potencial de financiamento. Tudo feito com modelos de inteligência artificial.
           </p>
-          <div className="text-center mt-8">
-            <a
-              href="#analise-form"
-              className="inline-block bg-blue-700 text-white text-lg px-8 py-3 rounded-xl shadow-lg hover:bg-blue-800 transition"
-            >
-              Submeter documentos para análise
-            </a>
-          </div>
-        </section>
 
-        {/* Formulário inline para análise IA */}
-        <section id="analise-form" className="px-6 py-16 bg-white">
-          <h3 className="text-2xl font-semibold text-center mb-6 text-blue-900">
-            Formulário para análise de documentos
-          </h3>
+          {/* Formulário inline para análise IA */}
           <form
-            action="https://formspree.io/f/mldbeqnd"
+            action="https://formspree.io/f/xgegyknq"
             method="POST"
-            className="max-w-2xl mx-auto space-y-4"
+            className="max-w-xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-md"
           >
-            <input
-              type="text"
-              name="empresa"
-              required
-              placeholder="Nome da empresa"
-              className="w-full border p-3 rounded-lg shadow-sm"
-            />
             <input
               type="email"
               name="email"
               required
               placeholder="Seu e-mail"
-              className="w-full border p-3 rounded-lg shadow-sm"
+              className="w-full border p-3 rounded-lg shadow-sm mb-4"
+            />
+            <input
+              type="file"
+              name="documento"
+              className="w-full border p-3 rounded-lg shadow-sm mb-4"
             />
             <textarea
-              name="descricao"
+              name="mensagem"
               rows="4"
-              required
-              placeholder="Descreva brevemente o negócio, situação financeira, etc."
-              className="w-full border p-3 rounded-lg shadow-sm"
+              placeholder="Comentário ou contexto (opcional)"
+              className="w-full border p-3 rounded-lg shadow-sm mb-4"
             ></textarea>
             <button
               type="submit"
-              className="w-full bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800"
+              className="w-full bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition"
             >
-              Enviar para análise
+              Submeter para análise
             </button>
           </form>
         </section>
 
-        {/* Formulário principal de cadastro */}
+        {/* Formulário Contato */}
         <section id="cadastro" className="px-6 py-16 bg-gray-50">
           <h3 className="text-2xl font-semibold text-center mb-6 text-blue-900">
             Quer vender ou comprar uma empresa?
