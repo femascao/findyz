@@ -10,6 +10,7 @@ export default function Page() {
       {/* Head */}
       <head>
         <title>Findyz - Ecossistema de M&A</title>
+        <meta name="google-site-verification" content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY" />
         <link rel="icon" href="/assets/findyz_logo_transparent.png" type="image/png" />
       </head>
 
