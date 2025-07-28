@@ -83,7 +83,7 @@ export default function Page() {
           <div className="max-w-4xl mx-auto text-left">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Porquê a Findyz?</h2>
             <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
+<div className="mt-8 grid md:grid-cols-2 gap-6">
   {[
     {
       icon: <Search className="text-[#3448C5]" size={24} />,
@@ -106,42 +106,25 @@ export default function Page() {
       desc: "Equity, LBO, híbrido — escolha o melhor."
     },
     {
-    icon: <Briefcase className="text-[#3448C5]" size={24} />, title: "Suporte jurídico e estratégico", desc: "Do início ao fecho do negócio."
-  },
-  {
-    icon: <Users className="text-[#3448C5]" size={24} />, title: "Apoio a searchers", desc: "Busca por investidores, estrutura de capital e due diligence."
-  }]} className="mt-8 space-y-4 text-left text-lg"
->
-{[
-  {
-    icon: <Users className="text-[#3448C5] mt-1" size={20} />,
-    text: "A sucessão empresarial é um desafio urgente para milhares de PMEs."
-  },
-  {
-    icon: <Briefcase className="text-[#3448C5] mt-1" size={20} />,
-    text: "Empreender comprando uma empresa é até 80% menos arriscado do que começar do zero."
-  },
-  {
-    icon: <Banknote className="text-[#3448C5] mt-1" size={20} />,
-    text: "Há incentivos e financiamento disponíveis para aquisições empresariais."
-  },
-  {
-    icon: <UserPlus className="text-[#3448C5] mt-1" size={20} />,
-    text: "Muitas empresas familiares precisam de sucessores externos."
-  },
-  {
-    icon: <Lock className="text-[#3448C5] mt-1" size={20} />,
-    text: "Transparência e verificação são essenciais para garantir negócios seguros."
-  },
-  {
-    icon: <Search className="text-[#3448C5] mt-1" size={20} />,
-    text: "A procura por negócios rentáveis está a crescer entre jovens empreendedores."
-  },
-  {
-    icon: <Shuffle className="text-[#3448C5] mt-1" size={20} />,
-    text: "O modelo LBO permite comprar empresas usando o próprio fluxo de caixa do negócio."
-  }
-].map((item, i) => (
+      icon: <Briefcase className="text-[#3448C5]" size={24} />,
+      title: "Suporte jurídico e estratégico",
+      desc: "Do início ao fecho do negócio."
+    },
+    {
+      icon: <Users className="text-[#3448C5]" size={24} />,
+      title: "Apoio a searchers",
+      desc: "Busca por investidores, estrutura de capital e due diligence."
+    }
+  ].map((item, i) => (
+    <div key={i} className="flex gap-4 items-start">
+      {item.icon}
+      <div>
+        <h4 className="text-xl font-semibold text-[#3448C5]">{item.title}</h4>
+        <p className="text-gray-700">{item.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>
   <motion.div
     key={i}
     variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
