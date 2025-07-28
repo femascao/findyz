@@ -161,13 +161,6 @@ export default function Page() {
     </motion.div>
   ))}
 </motion.div>
-  
-  
-  
-  
-  
-  
-</div>
           </div>
         </section>
 
