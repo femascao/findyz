@@ -41,7 +41,7 @@ export default function Page() {
       {/* Header */}
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50 text-[#3448C5]">
         <div className="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center">
-          <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={120} height={50} priority />
+          <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={160} height={65} priority />
           <nav className="space-x-6 font-medium">
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
             <a href="#capital-hub" className="hover:underline">Capital Hub</a>
@@ -74,9 +74,32 @@ export default function Page() {
 
         {/* Facts Section */}
         <section className="bg-white py-20 text-gray-800">
+          <div className="max-w-4xl mx-auto text-left">
+            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Porquê a Findyz?</h2>
+            <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
+            <ul className="list-disc pl-6 space-y-2 text-lg">
+              <li>Empresas e compradores verificados</li>
+              <li>Valuation e diagnóstico automáticos com IA</li>
+              <li>Parcerias com investidores e bancos</li>
+              <li>Modelos financeiros flexíveis: equity, LBO, híbrido</li>
+              <li>Suporte jurídico, estratégico e operacional</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="bg-[#F6F7FB] py-20 text-gray-800">
+          <div className="max-w-4xl mx-auto text-left">
+            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">A nossa missão</h2>
+            <p className="text-lg">Democratizar o acesso ao empreendedorismo por aquisição em Portugal, reduzindo o risco para quem quer empreender e aumentando a longevidade de empresas que merecem continuar.</p>
+          </div>
+        </section>
+
+        <section className="bg-white py-20 text-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Sabia que...</h2>
             <ul className="space-y-4 text-left text-lg">
+              <li>✔️ A sucessão empresarial é um desafio urgente para milhares de PMEs</li>
+              <li>✔️ Empreendedorismo por aquisição permite escalar com ativos e equipas já operacionais</li>
               <li>✔️ Comprar uma empresa é muitas vezes menos arriscado do que criar uma do zero</li>
               <li>✔️ Empresas adquiridas já possuem receitas, clientes e operações estáveis</li>
               <li>✔️ A aquisição pode ser financiada com crédito ou parceiros</li>
@@ -89,8 +112,8 @@ export default function Page() {
         {/* Simulador com lógica avançada */}
         <section id="capital-hub" className="px-6 py-24 bg-[#F6F7FB]">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-[#3448C5]">Findyz Capital Hub</h2>
-            <p className="mt-4 text-center text-[#A09CE5] text-lg max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
+            <p className="mt-4 text-left text-[#A09CE5] text-lg max-w-3xl"
               Oferecemos soluções financeiras e parcerias estratégicas para facilitar o fecho do negócio — com segurança, flexibilidade e agilidade.
             </p>
             <ul className="mt-8 space-y-4 text-lg text-gray-800 max-w-3xl mx-auto">
@@ -109,6 +132,8 @@ export default function Page() {
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Simule o valor do seu negócio</h2>
             <p className="text-lg text-[#A09CE5] mb-8">Preencha os dados abaixo e receba uma estimativa baseada no mercado</p>
             <form onSubmit={handleValuationSubmit} className="space-y-4 text-left">
+              <input name="colaboradores" type="number" placeholder="N.º de colaboradores" className="w-full border p-3 rounded-lg shadow-sm" aria-label="N.º de colaboradores" required />
+              <textarea name="extra" rows="3" placeholder="Informações adicionais relevantes (ex: contratos, ativos, contexto da venda)" className="w-full border p-3 rounded-lg shadow-sm"></textarea>
               <input name="receita" type="number" placeholder="Receita anual (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Receita anual" required />
               <input name="lucro" type="number" placeholder="Lucro líquido (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Lucro líquido" required />
               <input name="tempo" type="number" placeholder="Tempo de operação (anos)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Tempo de operação" required />
