@@ -110,8 +110,7 @@ export default function Page() {
   },
   {
     icon: <Users className="text-[#3448C5]" size={24} />, title: "Apoio a searchers", desc: "Busca por investidores, estrutura de capital e due diligence."
-  }, hidden: {} }}
-  className="mt-8 space-y-4 text-left text-lg"
+  }]} className="mt-8 space-y-4 text-left text-lg"
 >
 {[
   {
