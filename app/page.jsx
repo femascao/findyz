@@ -125,16 +125,7 @@ export default function Page() {
     </div>
   ))}
 </div>
-  <motion.div
-    key={i}
-    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-    transition={{ duration: 0.4 }}
-    className="flex items-start gap-2"
-  >
-    {item.icon}
-    <p>{item.text}</p>
-  </motion.div>
-))}
+  }
 
 </motion.div>
           </div>
