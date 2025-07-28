@@ -80,12 +80,32 @@ export default function Page() {
             <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
             <div className="grid md:grid-cols-2 gap-6 mt-8">
   {[
-    const cardVariants = {
-      hidden: { opacity: 0, y: 30 },
-      visible: { opacity: 1, y: 0 }
-    };
-  ]}
-  {[...Array(5)].map((_, i) => (
+    {
+      icon: <Search className="text-[#3448C5]" size={24} />,
+      title: "Empresas e compradores verificados",
+      desc: "Confiança em cada negócio."
+    },
+    {
+      icon: <Lock className="text-[#3448C5]" size={24} />,
+      title: "Valuation e diagnóstico com IA",
+      desc: "Análise inteligente do negócio."
+    },
+    {
+      icon: <Banknote className="text-[#3448C5]" size={24} />,
+      title: "Parcerias com investidores",
+      desc: "Conectamos com capital estratégico."
+    },
+    {
+      icon: <Shuffle className="text-[#3448C5]" size={24} />,
+      title: "Modelos financeiros flexíveis",
+      desc: "Equity, LBO, híbrido — escolha o melhor."
+    },
+    {
+      icon: <Briefcase className="text-[#3448C5]" size={24} />,
+      title: "Suporte jurídico e estratégico",
+      desc: "Do início ao fecho do negócio."
+    }
+  ].map((item, i) => (
     <motion.div
       key={i}
       variants={cardVariants}
@@ -95,7 +115,8 @@ export default function Page() {
       transition={{ duration: 0.4, delay: i * 0.1 }}
       className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm"
     >
-      {/* Ícone e conteúdo aqui substituídos no JSX real */}
+      {item.icon}
+      <p><strong>{item.title}</strong><br />{item.desc}</p>
     </motion.div>
   ))}
 </div>
