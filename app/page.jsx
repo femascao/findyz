@@ -120,22 +120,10 @@ export default function Page() {
     </motion.div>
   ))}
 </div>
-  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-    <Lock className="text-[#3448C5]" size={24} />
-    <p><strong>Valuation e diagnóstico com IA</strong><br />Análise inteligente do negócio.</p>
-  </div>
-  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-    <Banknote className="text-[#3448C5]" size={24} />
-    <p><strong>Parcerias com investidores</strong><br />Conectamos com capital estratégico.</p>
-  </div>
-  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-    <Shuffle className="text-[#3448C5]" size={24} />
-    <p><strong>Modelos financeiros flexíveis</strong><br />Equity, LBO, híbrido — escolha o melhor.</p>
-  </div>
-  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-    <Briefcase className="text-[#3448C5]" size={24} />
-    <p><strong>Suporte jurídico e estratégico</strong><br />Do início ao fecho do negócio.</p>
-  </div>
+  
+  
+  
+  
 </div>
           </div>
         </section>
@@ -168,30 +156,12 @@ export default function Page() {
     </motion.div>
   ))}
 </motion.div>
-  <div className="flex items-start gap-2">
-    <Briefcase className="text-[#3448C5] mt-1" size={20} />
-    <p>Empreendedorismo por aquisição permite escalar com ativos e equipas já operacionais</p>
-  </div>
-  <div className="flex items-start gap-2">
-    <Lock className="text-[#3448C5] mt-1" size={20} />
-    <p>Comprar uma empresa é muitas vezes menos arriscado do que criar uma do zero</p>
-  </div>
-  <div className="flex items-start gap-2">
-    <Search className="text-[#3448C5] mt-1" size={20} />
-    <p>Empresas adquiridas já possuem receitas, clientes e operações estáveis</p>
-  </div>
-  <div className="flex items-start gap-2">
-    <Banknote className="text-[#3448C5] mt-1" size={20} />
-    <p>A aquisição pode ser financiada com crédito ou parceiros</p>
-  </div>
-  <div className="flex items-start gap-2">
-    <UserPlus className="text-[#3448C5] mt-1" size={20} />
-    <p>Mais de 70% das PMEs em Portugal não têm plano de sucessão</p>
-  </div>
-  <div className="flex items-start gap-2">
-    <Shuffle className="text-[#3448C5] mt-1" size={20} />
-    <p>O retorno do investimento pode surgir logo no primeiro ano</p>
-  </div>
+  
+  
+  
+  
+  
+  
 </div>
           </div>
         </section>
