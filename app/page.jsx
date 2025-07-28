@@ -8,6 +8,11 @@ import { Briefcase, Lock, Search, Banknote, Users, Shuffle, UserPlus } from "luc
 export default function Page() {
   const [valuation, setValuation] = useState(null);
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   function handleValuationSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
