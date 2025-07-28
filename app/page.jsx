@@ -46,7 +46,7 @@ export default function Page() {
 
       {/* Header */}
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50 text-[#3448C5]">
-        <div className="max-w-7xl mx-auto px-6 py-0.5 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center h-[80px]">
           <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={160} height={65} priority />
           <nav className="space-x-6 font-semibold text-base">
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
@@ -106,47 +106,11 @@ export default function Page() {
       desc: "Equity, LBO, híbrido — escolha o melhor."
     },
     {
-      icon: <Briefcase className="text-[#3448C5]" size={24} />,
-      title: "Suporte jurídico e estratégico",
-      desc: "Do início ao fecho do negócio."
-    }
-  ].map((item, i) => (
-    <motion.div
-      key={i}
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: i * 0.1 }}
-      className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm"
-    >
-      {item.icon}
-      <p><strong>{item.title}</strong><br />{item.desc}</p>
-    </motion.div>
-  ))}
-</div>
-  
-  
-  
-  
-</div>
-</section>
-
-        <section className="bg-[#F6F7FB] py-20 text-gray-800">
-          <div className="max-w-4xl mx-auto text-left">
-            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">A nossa missão</h2>
-            <p className="text-lg">Democratizar o acesso ao empreendedorismo por aquisição em Portugal, reduzindo o risco para quem quer empreender e aumentando a longevidade de empresas que merecem continuar.</p>
-          </div>
-        </section>
-
-        <section className="bg-white py-20 text-gray-800">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Sabia que...</h2>
-            <motion.div
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={{ visible: { transition: { staggerChildren: 0.2 } }, hidden: {} }}
+    icon: <Briefcase className="text-[#3448C5]" size={24} />, title: "Suporte jurídico e estratégico", desc: "Do início ao fecho do negócio."
+  },
+  {
+    icon: <Users className="text-[#3448C5]" size={24} />, title: "Apoio a searchers", desc: "Busca por investidores, estrutura de capital e due diligence."
+  }, hidden: {} }}
   className="mt-8 space-y-4 text-left text-lg"
 >
 {[
