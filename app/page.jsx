@@ -130,8 +130,7 @@ export default function Page() {
   
   
 </div>
-          </div>
-        </section>
+</section>
 
         <section className="bg-[#F6F7FB] py-20 text-gray-800">
           <div className="max-w-4xl mx-auto text-left">
@@ -150,16 +149,47 @@ export default function Page() {
   variants={{ visible: { transition: { staggerChildren: 0.2 } }, hidden: {} }}
   className="mt-8 space-y-4 text-left text-lg"
 >
-  {[...Array(7)].map((_, i) => (
-    <motion.div
-      key={i}
-      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-      transition={{ duration: 0.4 }}
-      className="flex items-start gap-2"
-    >
-      {/* Ícone e conteúdo substituídos manualmente */}
-    </motion.div>
-  ))}
+{[
+  {
+    icon: <Users className="text-[#3448C5] mt-1" size={20} />,
+    text: "A sucessão empresarial é um desafio urgente para milhares de PMEs."
+  },
+  {
+    icon: <Briefcase className="text-[#3448C5] mt-1" size={20} />,
+    text: "Empreender comprando uma empresa é até 80% menos arriscado do que começar do zero."
+  },
+  {
+    icon: <Banknote className="text-[#3448C5] mt-1" size={20} />,
+    text: "Há incentivos e financiamento disponíveis para aquisições empresariais."
+  },
+  {
+    icon: <UserPlus className="text-[#3448C5] mt-1" size={20} />,
+    text: "Muitas empresas familiares precisam de sucessores externos."
+  },
+  {
+    icon: <Lock className="text-[#3448C5] mt-1" size={20} />,
+    text: "Transparência e verificação são essenciais para garantir negócios seguros."
+  },
+  {
+    icon: <Search className="text-[#3448C5] mt-1" size={20} />,
+    text: "A procura por negócios rentáveis está a crescer entre jovens empreendedores."
+  },
+  {
+    icon: <Shuffle className="text-[#3448C5] mt-1" size={20} />,
+    text: "O modelo LBO permite comprar empresas usando o próprio fluxo de caixa do negócio."
+  }
+].map((item, i) => (
+  <motion.div
+    key={i}
+    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+    transition={{ duration: 0.4 }}
+    className="flex items-start gap-2"
+  >
+    {item.icon}
+    <p>{item.text}</p>
+  </motion.div>
+))}
+
 </motion.div>
           </div>
         </section>
