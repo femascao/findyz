@@ -113,9 +113,9 @@ export default function Page() {
         <section id="capital-hub" className="px-6 py-24 bg-[#F6F7FB]">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
-            <p className="mt-4 text-left text-[#A09CE5] text-lg max-w-3xl"
+             <p className="mt-4 text-left text-[#A09CE5] text-lg max-w-3xl">
               Oferecemos soluções financeiras e parcerias estratégicas para facilitar o fecho do negócio — com segurança, flexibilidade e agilidade.
-            </p>
+              </p>  
             <ul className="mt-8 space-y-4 text-lg text-gray-800 max-w-3xl mx-auto">
               <li className="flex items-start gap-2"><Lock className="text-[#3448C5] mt-1" size={20} /> <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
               <li className="flex items-start gap-2"><Users className="text-[#3448C5] mt-1" size={20} /> <strong>Busca por investidores</strong> — conectamos com investidores individuais e fundos interessados em aquisições conjuntas</li>
