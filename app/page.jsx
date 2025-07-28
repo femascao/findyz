@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Briefcase, Lock, Search, Banknote, Users, Shuffle, UserPlus } from "lucide-react";
 
 export default function Page() {
@@ -40,9 +41,9 @@ export default function Page() {
 
       {/* Header */}
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50 text-[#3448C5]">
-        <div className="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-0.5 flex justify-between items-center">
           <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={160} height={65} priority />
-          <nav className="space-x-6 font-medium">
+          <nav className="space-x-6 font-semibold text-base">
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
             <a href="#capital-hub" className="hover:underline">Capital Hub</a>
             <a href="#analise-ia" className="hover:underline">Análise IA</a>
@@ -77,13 +78,44 @@ export default function Page() {
           <div className="max-w-4xl mx-auto text-left">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Porquê a Findyz?</h2>
             <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
-            <ul className="list-disc pl-6 space-y-2 text-lg">
-              <li>Empresas e compradores verificados</li>
-              <li>Valuation e diagnóstico automáticos com IA</li>
-              <li>Parcerias com investidores e bancos</li>
-              <li>Modelos financeiros flexíveis: equity, LBO, híbrido</li>
-              <li>Suporte jurídico, estratégico e operacional</li>
-            </ul>
+            <div className="grid md:grid-cols-2 gap-6 mt-8">
+  {[
+    const cardVariants = {
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0 }
+    };
+  ]}
+  {[...Array(5)].map((_, i) => (
+    <motion.div
+      key={i}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: i * 0.1 }}
+      className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm"
+    >
+      {/* Ícone e conteúdo aqui substituídos no JSX real */}
+    </motion.div>
+  ))}
+</div>
+  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+    <Lock className="text-[#3448C5]" size={24} />
+    <p><strong>Valuation e diagnóstico com IA</strong><br />Análise inteligente do negócio.</p>
+  </div>
+  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+    <Banknote className="text-[#3448C5]" size={24} />
+    <p><strong>Parcerias com investidores</strong><br />Conectamos com capital estratégico.</p>
+  </div>
+  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+    <Shuffle className="text-[#3448C5]" size={24} />
+    <p><strong>Modelos financeiros flexíveis</strong><br />Equity, LBO, híbrido — escolha o melhor.</p>
+  </div>
+  <div className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
+    <Briefcase className="text-[#3448C5]" size={24} />
+    <p><strong>Suporte jurídico e estratégico</strong><br />Do início ao fecho do negócio.</p>
+  </div>
+</div>
           </div>
         </section>
 
@@ -97,27 +129,61 @@ export default function Page() {
         <section className="bg-white py-20 text-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Sabia que...</h2>
-            <ul className="space-y-4 text-left text-lg">
-              <li>✔️ A sucessão empresarial é um desafio urgente para milhares de PMEs</li>
-              <li>✔️ Empreendedorismo por aquisição permite escalar com ativos e equipas já operacionais</li>
-              <li>✔️ Comprar uma empresa é muitas vezes menos arriscado do que criar uma do zero</li>
-              <li>✔️ Empresas adquiridas já possuem receitas, clientes e operações estáveis</li>
-              <li>✔️ A aquisição pode ser financiada com crédito ou parceiros</li>
-              <li>✔️ Mais de 70% das PMEs em Portugal não têm plano de sucessão</li>
-              <li>✔️ O retorno do investimento pode surgir logo no primeiro ano</li>
-            </ul>
+            <motion.div
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{ visible: { transition: { staggerChildren: 0.2 } }, hidden: {} }}
+  className="mt-8 space-y-4 text-left text-lg"
+>
+  {[...Array(7)].map((_, i) => (
+    <motion.div
+      key={i}
+      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+      transition={{ duration: 0.4 }}
+      className="flex items-start gap-2"
+    >
+      {/* Ícone e conteúdo substituídos manualmente */}
+    </motion.div>
+  ))}
+</motion.div>
+  <div className="flex items-start gap-2">
+    <Briefcase className="text-[#3448C5] mt-1" size={20} />
+    <p>Empreendedorismo por aquisição permite escalar com ativos e equipas já operacionais</p>
+  </div>
+  <div className="flex items-start gap-2">
+    <Lock className="text-[#3448C5] mt-1" size={20} />
+    <p>Comprar uma empresa é muitas vezes menos arriscado do que criar uma do zero</p>
+  </div>
+  <div className="flex items-start gap-2">
+    <Search className="text-[#3448C5] mt-1" size={20} />
+    <p>Empresas adquiridas já possuem receitas, clientes e operações estáveis</p>
+  </div>
+  <div className="flex items-start gap-2">
+    <Banknote className="text-[#3448C5] mt-1" size={20} />
+    <p>A aquisição pode ser financiada com crédito ou parceiros</p>
+  </div>
+  <div className="flex items-start gap-2">
+    <UserPlus className="text-[#3448C5] mt-1" size={20} />
+    <p>Mais de 70% das PMEs em Portugal não têm plano de sucessão</p>
+  </div>
+  <div className="flex items-start gap-2">
+    <Shuffle className="text-[#3448C5] mt-1" size={20} />
+    <p>O retorno do investimento pode surgir logo no primeiro ano</p>
+  </div>
+</div>
           </div>
         </section>
 
         {/* Simulador com lógica avançada */}
-        <section id="capital-hub" className="px-6 py-24 bg-[#F6F7FB]">
+        <section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#F6F7FB]">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
-            <p className="mt-4 text-left text-[#A09CE5] text-lg max-w-5xl">
+            <p className="mt-4 text-left text-[#3448C5] text-lg max-w-5xl">
               Oferecemos soluções financeiras e parcerias estratégicas para facilitar o fecho do negócio — com segurança, flexibilidade e agilidade.
            </p>
 
-            <ul className="mt-8 space-y-4 text-lg text-gray-800 max-w-3xl mx-auto">
+            <ul className="mt-8 space-y-4 text-lg text-gray-800 max-w-6xl mx-auto">
               <li className="flex items-start gap-2"><Lock className="text-[#3448C5] mt-1" size={20} /> <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
               <li className="flex items-start gap-2"><Users className="text-[#3448C5] mt-1" size={20} /> <strong>Busca por investidores</strong> — conectamos com investidores individuais e fundos interessados em aquisições conjuntas</li>
               <li className="flex items-start gap-2"><UserPlus className="text-[#3448C5] mt-1" size={20} /> <strong>Busca por sócios estratégicos</strong> — encontre parceiros que complementam capital e experiência</li>
@@ -128,10 +194,10 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="bg-violet-50 py-24">
+        <section className="bg-[#F6F7FB] py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Simule o valor do seu negócio</h2>
-            <p className="text-lg text-[#A09CE5] mb-8">Preencha os dados abaixo e receba uma estimativa baseada no mercado</p>
+            <p className="text-lg text-[#3448C5] mb-8">Preencha os dados abaixo e receba uma estimativa baseada no mercado</p>
             <form onSubmit={handleValuationSubmit} className="space-y-4 text-left">
               <input name="colaboradores" type="number" placeholder="N.º de colaboradores" className="w-full border p-3 rounded-lg shadow-sm" aria-label="N.º de colaboradores" required />
               <textarea name="extra" rows="3" placeholder="Informações adicionais relevantes (ex: contratos, ativos, contexto da venda)" className="w-full border p-3 rounded-lg shadow-sm"></textarea>
