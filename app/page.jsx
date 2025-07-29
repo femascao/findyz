@@ -114,7 +114,7 @@ export default function Page() {
         </section>
 
 $1
-        <section className="bg-white py-20 text-gray-800">
+        <section className="bg-[#DDE1F9] py-20 text-gray-800">
           <div className="max-w-4xl mx-auto text-left">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Porquê a Findyz?</h2>
             <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
@@ -165,7 +165,7 @@ $1
         </section>
 
         {/* Simulador com lógica avançada */}
-        <section id="analise-ia" className="bg-[#F6F7FB] py-20 px-6 scroll-mt-20">
+        <section id="analise-ia" className="bg-white py-20 px-6 scroll-mt-20">
   <div className="max-w-5xl mx-auto text-left">
     <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Análise com Inteligência Artificial</h2>
     <p className="text-lg text-gray-800 mb-4">
@@ -180,7 +180,7 @@ $1
   </div>
 </section>
 
-<section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#F6F7FB] scroll-mt-20">
+<section id="capital-hub" className="px-4 md:px-10 py-20 bg-white scroll-mt-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
             <p className="mt-4 text-left text-[#3448C5] text-lg max-w-5xl">
@@ -198,7 +198,7 @@ $1
           </div>
         </section>
 
-        <section className="bg-[#F6F7FB] py-24">
+        <section className="bg-[#DDE1F9] py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Simule o valor do seu negócio</h2>
             <p className="text-lg text-[#3448C5] mb-8">Preencha os dados abaixo e receba uma estimativa baseada no mercado</p>
@@ -218,7 +218,7 @@ $1
           </div>
         </section>
         {/* FAQ Section */}
-        <section className="px-6 py-24 bg-white">
+        <section className="px-6 py-24 bg-[#F6F7FB]">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-[#3448C5] mb-10">Perguntas Frequentes</h2>
             <div className="space-y-6 text-gray-800 text-lg">
