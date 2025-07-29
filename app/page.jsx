@@ -92,8 +92,9 @@ export default function Page() {
               Cadastrar para o pré-lançamento
             </a>
           </div>
-        
+        </section>
 
+        
         {/* Como Funciona */}
         <section id="como-funciona" className="bg-white py-20 px-6 scroll-mt-20">
           <div className="max-w-5xl mx-auto text-left">
