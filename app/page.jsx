@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Head from "next/head";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Lock, Search, Banknote, Users, Shuffle, UserPlus } from "lucide-react";
@@ -34,22 +35,27 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-[#F6F7FB] text-gray-900">
-      <head>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Findyz",
-  "url": "https://findyz.pt",
-  "logo": "https://findyz.pt/assets/findyz_logo_transparent.png"
-}</script>
-        <meta name="google-site-verification" content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY" />
-        <title>Findyz | Compre ou venda empresas verificados em Portugal</title>
-        <meta name="description" content="O Findyz liga empreendedores a empresas validadas em Portugal. Compre ou venda negócios com segurança, análise IA e financiamento inteligente." />
-        <meta property="og:title" content="Findyz - Empresas verificadas à venda em Portugal" />
-        <meta property="og:description" content="Plataforma digital para compra e venda de empresas verificados. Registe-se para o pré-lançamento." />
-        <meta property="og:image" content="/assets/findyz_logo_transparent.png" />
-        <link rel="icon" href="/assets/findyz_logo_transparent.png" type="image/png" />
-      </head>
+      <Head>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Findyz",
+        url: "https://findyz.pt",
+        logo: "https://findyz.pt/assets/findyz_logo_transparent.png"
+      })
+    }}
+  />
+  <meta name="google-site-verification" content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY" />
+  <title>Findyz | Compre ou venda empresas verificados em Portugal</title>
+  <meta name="description" content="O Findyz liga empreendedores a empresas validadas em Portugal. Compre ou venda negócios com segurança, análise IA e financiamento inteligente." />
+  <meta property="og:title" content="Findyz - Empresas verificadas à venda em Portugal" />
+  <meta property="og:description" content="Plataforma digital para compra e venda de empresas verificados. Registe-se para o pré-lançamento." />
+  <meta property="og:image" content="/assets/findyz_logo_transparent.png" />
+  <link rel="icon" href="/assets/findyz_logo_transparent.png" type="image/png" />
+</Head>
 
       {/* Header */}
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50 text-[#3448C5]">
