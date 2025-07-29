@@ -125,9 +125,7 @@ export default function Page() {
     </div>
   ))}
 </div>
-  }
-
-</motion.div>
+  
           </div>
         </section>
 
