@@ -76,7 +76,7 @@ export default function Page() {
         
 
         {/* Hero Section */}
-        <section className="px-6 py-24 max-w-7xl mx-auto bg-[#F6F7FB] text-center">
+        <section className="px-6 py-24 max-w-7xl mx-auto bg-[#CBD4F2] text-center">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#3448C5]">
             Está a nascer em Portugal o 1.º ecossistema digital de compra e venda de empresas
           </h1>
@@ -114,7 +114,7 @@ export default function Page() {
         </section>
 
 $1
-        <section className="bg-[#DDE1F9] py-20 text-gray-800">
+        <section className="bg-[#CBD4F2] py-20 text-gray-800">
           <div className="max-w-4xl mx-auto text-left">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Porquê a Findyz?</h2>
             <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
@@ -180,7 +180,7 @@ $1
   </div>
 </section>
 
-<section id="capital-hub" className="px-4 md:px-10 py-20 bg-white scroll-mt-20">
+<section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#CBD4F2] scroll-mt-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
             <p className="mt-4 text-left text-[#3448C5] text-lg max-w-5xl">
