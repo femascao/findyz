@@ -73,7 +73,7 @@ export default function Page() {
       <main className="pt-20">
 
         {/* Como Funciona */}
-        <section id="como-funciona" className="bg-white py-20 px-6">
+        <section id="como-funciona" className="bg-white py-20 px-6 scroll-mt-20">
           <div className="max-w-5xl mx-auto text-left">
             <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Como funciona o Findyz?</h2>
             <p className="text-lg text-gray-800 mb-4">
@@ -92,7 +92,7 @@ export default function Page() {
 
         {/* Hero Section */}
         <section className="px-6 py-24 max-w-7xl mx-auto bg-[#F6F7FB] text-center">
-          <h1 className="text-5xl font-bold leading-tight text-[#3448C5]">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#3448C5]">
             Está a nascer em Portugal o 1.º ecossistema digital de compra e venda de empresas
           </h1>
           <p className="mt-6 text-xl text-gray-700">
@@ -101,7 +101,7 @@ export default function Page() {
           <div className="mt-10">
             <a
               href="#cadastro"
-              className="inline-block bg-[#3448C5] hover:bg-[#A09CE5] text-white text-lg px-8 py-3 rounded-xl shadow-lg transition"
+              className="inline-block bg-[#3448C5] hover:bg-[#2B3EAE] text-white text-lg px-8 py-3 rounded-xl shadow-lg transition"
               aria-label="Cadastrar para o pré-lançamento"
             >
               Cadastrar para o pré-lançamento
@@ -161,7 +161,7 @@ export default function Page() {
         </section>
 
         {/* Simulador com lógica avançada */}
-        <section id="analise-ia" className="bg-[#F6F7FB] py-20 px-6">
+        <section id="analise-ia" className="bg-[#F6F7FB] py-20 px-6 scroll-mt-20">
   <div className="max-w-5xl mx-auto text-left">
     <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Análise com Inteligência Artificial</h2>
     <p className="text-lg text-gray-800 mb-4">
@@ -176,7 +176,7 @@ export default function Page() {
   </div>
 </section>
 
-<section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#F6F7FB]">
+<section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#F6F7FB] scroll-mt-20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
             <p className="mt-4 text-left text-[#3448C5] text-lg max-w-5xl">
@@ -204,7 +204,7 @@ export default function Page() {
               <input name="receita" type="number" placeholder="Receita anual (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Receita anual" required />
               <input name="lucro" type="number" placeholder="Lucro líquido (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Lucro líquido" required />
               <input name="tempo" type="number" placeholder="Tempo de operação (anos)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Tempo de operação" required />
-              <button type="submit" className="w-full bg-[#3448C5] hover:bg-[#A09CE5] text-white py-3 rounded-lg" aria-label="Calcular Valuation">Calcular</button>
+              <button type="submit" className="w-full bg-[#3448C5] hover:bg-[#2B3EAE] text-white py-3 rounded-lg" aria-label="Calcular Valuation">Calcular</button>
             </form>
             {valuation && (
               <div className="mt-6 text-xl text-[#3448C5]">
@@ -250,7 +250,7 @@ export default function Page() {
               <option value="vender">Vender minha empresa</option>
             </select>
             <textarea name="mensagem" rows="4" placeholder="Conte mais sobre o que procura ou oferece" className="w-full border p-3 rounded-lg shadow-sm"></textarea>
-            <button type="submit" className="w-full bg-[#3448C5] hover:bg-[#A09CE5] text-white py-3 rounded-lg">Enviar</button>
+            <button type="submit" className="w-full bg-[#3448C5] hover:bg-[#2B3EAE] text-white py-3 rounded-lg">Enviar</button>
           </form>
         </section>
       </main>
