@@ -72,6 +72,24 @@ export default function Page() {
 
       <main className="pt-20">
 
+        {/* Como Funciona */}
+        <section id="como-funciona" className="bg-white py-20 px-6">
+          <div className="max-w-5xl mx-auto text-left">
+            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Como funciona o Findyz?</h2>
+            <p className="text-lg text-gray-800 mb-4">
+              A plataforma Findyz foi pensada para simplificar a compra e venda de empresas em Portugal, garantindo confiança e agilidade em todas as etapas:
+            </p>
+            <ol className="list-decimal pl-6 text-gray-800 space-y-3">
+              <li><strong>Criação de perfil verificado:</strong> compradores e empresas passam por verificação antes de serem publicados.</li>
+              <li><strong>Validação do negócio:</strong> através de dados financeiros e critérios de qualidade, analisamos se a empresa está pronta para venda.</li>
+              <li><strong>Simulação de valuation:</strong> com o nosso simulador, vendedores podem obter uma estimativa automática do valor do negócio.</li>
+              <li><strong>Matching inteligente:</strong> conectamos empresas a potenciais compradores conforme perfil e interesse.</li>
+              <li><strong>Capital Hub:</strong> oferecemos suporte com capital, sócios estratégicos ou financiamento bancário.</li>
+              <li><strong>Fecho seguro:</strong> a operação é finalizada com acompanhamento legal e pagamento em ambiente escrow.</li>
+            </ol>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="px-6 py-24 max-w-7xl mx-auto bg-[#F6F7FB] text-center">
           <h1 className="text-5xl font-bold leading-tight text-[#3448C5]">
@@ -143,7 +161,22 @@ export default function Page() {
         </section>
 
         {/* Simulador com lógica avançada */}
-        <section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#F6F7FB]">
+        <section id="analise-ia" className="bg-[#F6F7FB] py-20 px-6">
+  <div className="max-w-5xl mx-auto text-left">
+    <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Análise com Inteligência Artificial</h2>
+    <p className="text-lg text-gray-800 mb-4">
+      Usamos algoritmos de IA para dar suporte a vendedores e compradores na avaliação dos negócios. Com base nos dados inseridos, a plataforma calcula automaticamente o valuation, identifica riscos e sugere a estrutura de compra mais adequada.
+    </p>
+    <ul className="list-disc pl-6 text-gray-800 space-y-3">
+      <li><strong>Valuation automatizado:</strong> baseado em métricas como lucro, receita e tempo de operação.</li>
+      <li><strong>Modelos flexíveis:</strong> sugerimos estruturas de aquisição como LBO, equity total ou modelo híbrido.</li>
+      <li><strong>Análise de riscos:</strong> indicadores ajudam a identificar estabilidade do negócio, riscos legais ou operacionais.</li>
+      <li><strong>Comparação de múltiplos:</strong> benchmark com transações similares no mercado português.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#F6F7FB]">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
             <p className="mt-4 text-left text-[#3448C5] text-lg max-w-5xl">
