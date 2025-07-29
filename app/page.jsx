@@ -35,6 +35,13 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-[#F6F7FB] text-gray-900">
       <head>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Findyz",
+  "url": "https://findyz.pt",
+  "logo": "https://findyz.pt/assets/findyz_logo_transparent.png"
+}</script>
         <meta name="google-site-verification" content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY" />
         <title>Findyz | Compre ou venda empresas verificados em Portugal</title>
         <meta name="description" content="O Findyz liga empreendedores a empresas validadas em Portugal. Compre ou venda negócios com segurança, análise IA e financiamento inteligente." />
