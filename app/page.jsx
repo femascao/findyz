@@ -76,7 +76,7 @@ export default function Page() {
         
 
         {/* Hero Section */}
-        <section className="px-6 py-24 max-w-7xl mx-auto bg-[#CBD4F2] text-center">
+        <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="px-6 py-24 max-w-7xl mx-auto bg-[#CBD4F2] text-center" style={{ backgroundImage: 'url(/assets/pattern-light.svg)', backgroundRepeat: 'repeat', backgroundSize: '300px', opacity: 0.98 }}>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#3448C5]">
             Está a nascer em Portugal o 1.º ecossistema digital de compra e venda de empresas
           </h1>
@@ -92,7 +92,7 @@ export default function Page() {
               Cadastrar para o pré-lançamento
             </a>
           </div>
-        </section>
+        </motion.section>
 
         
         {/* Como Funciona */}
