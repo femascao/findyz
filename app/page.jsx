@@ -4,28 +4,43 @@ import Image from "next/image";
 import Head from "next/head";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Lock, Search, Banknote, Users, Shuffle, UserPlus } from "lucide-react";
+import {
+  Briefcase,
+  Lock,
+  Search,
+  Banknote,
+  Users,
+  Shuffle,
+  UserPlus,
+  ArrowRight,
+  Building2,
+  Rocket,
+  Sparkles,
+  ShieldCheck,
+  Calculator,
+} from "lucide-react";
 
+/**
+ * Findyz landing page — refreshed visual based on the Codesandbox reference
+ * - Preserva logo e paleta atual (#3448C5, #CBD4F2, #DDE1F9, tons cinza)
+ * - Layout com seções claras, cards animados e fluxo em passos
+ * - Totalmente client-side, compatível com Next.js App Router (app/page.jsx)
+ */
 export default function Page() {
-  const [valuation, setValuation] = useState(null);
+  const [valuation, setValuation] = useState<string | null>(null);
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  function handleValuationSubmit(e) {
+  function handleValuationSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const receita = parseFloat(data.get("receita"));
-    const lucro = parseFloat(data.get("lucro"));
-    const tempo = parseFloat(data.get("tempo"));
+    const data = new FormData(e.currentTarget);
+    const receita = parseFloat(String(data.get("receita")));
+    const lucro = parseFloat(String(data.get("lucro")));
+    const tempo = parseFloat(String(data.get("tempo")));
 
     if (!isNaN(receita) && !isNaN(lucro) && !isNaN(tempo)) {
-      // Fórmula mais robusta considerando múltiplos médios do mercado
-      const margemLucro = lucro / receita;
-      let multiploLucro = margemLucro > 0.2 ? 4 : margemLucro > 0.1 ? 3.5 : 3;
-      let multiploReceita = tempo > 5 ? 0.4 : 0.3;
+      // Fórmula simples e transparente (mesma lógica base do ficheiro anterior)
+      const margemLucro = lucro / Math.max(receita, 1);
+      const multiploLucro = margemLucro > 0.2 ? 4 : margemLucro > 0.1 ? 3.5 : 3;
+      const multiploReceita = tempo > 5 ? 0.4 : 0.3;
       const baseValuation = lucro * multiploLucro + receita * multiploReceita;
       setValuation(baseValuation.toFixed(2));
     } else {
@@ -33,35 +48,94 @@ export default function Page() {
     }
   }
 
+  const brand = {
+    primary: "#3448C5",
+    tint1: "#CBD4F2",
+    tint2: "#DDE1F9",
+    paper: "#F6F7FB",
+  };
+
+  const Section = ({
+    id,
+    className = "",
+    children,
+  }: {
+    id?: string;
+    className?: string;
+    children: React.ReactNode;
+  }) => (
+    <section id={id} className={`scroll-mt-24 ${className}`}>{children}</section>
+  );
+
+  const Card = ({ children, className = "" }: any) => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+      className={`rounded-2xl bg-white/90 shadow-sm ring-1 ring-black/5 ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+
   return (
     <div className="min-h-screen bg-[#F6F7FB] text-gray-900">
       <Head>
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "Findyz",
-        url: "https://findyz.pt",
-        logo: "https://findyz.pt/assets/findyz_logo_transparent.png"
-      })
-    }}
-  />
-  <meta name="google-site-verification" content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY" />
-  <title>Findyz | Compre ou venda empresas verificados em Portugal</title>
-  <meta name="description" content="O Findyz liga empreendedores a empresas validadas em Portugal. Compre ou venda negócios com segurança, análise IA e financiamento inteligente." />
-  <meta property="og:title" content="Findyz - Empresas verificadas à venda em Portugal" />
-  <meta property="og:description" content="Plataforma digital para compra e venda de empresas verificados. Registe-se para o pré-lançamento." />
-  <meta property="og:image" content="/assets/findyz_logo_transparent.png" />
-  <link rel="icon" href="/assets/findyz_logo_transparent.png" type="image/png" />
-</Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Findyz",
+              url: "https://findyz.pt",
+              logo: "/assets/findyz_logo_transparent.png",
+            }),
+          }}
+        />
+        <meta
+          name="google-site-verification"
+          content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY"
+        />
+        <title>Findyz | Compre ou venda empresas verificados em Portugal</title>
+        <meta
+          name="description"
+          content="O Findyz liga empreendedores a empresas validadas em Portugal. Compre ou venda negócios com segurança, análise IA e financiamento inteligente."
+        />
+        <meta
+          property="og:title"
+          content="Findyz - Empresas verificadas à venda em Portugal"
+        />
+        <meta
+          property="og:description"
+          content="Plataforma digital para compra e venda de empresas verificados. Registe-se para o pré-lançamento."
+        />
+        <meta property="og:image" content="/assets/findyz_logo_transparent.png" />
+        <link
+          rel="icon"
+          href="/assets/findyz_logo_transparent.png"
+          type="image/png"
+        />
+      </Head>
 
-      {/* Header */}
-      <header className="bg-white shadow fixed top-0 left-0 w-full z-50 text-[#3448C5]">
-        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center h-[80px]">
-          <Image src="/assets/findyz_logo_transparent.png" alt="Logo Findyz" width={160} height={65} priority />
-          <nav className="space-x-6 font-semibold text-base">
+      {/* Top bar */}
+      <header
+        className="bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 fixed top-0 left-0 w-full z-50 border-b border-black/5"
+      >
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/assets/findyz_logo_transparent.png"
+              alt="Logo Findyz"
+              width={150}
+              height={60}
+              priority
+            />
+          </div>
+          <nav className="hidden md:flex items-center gap-6 font-semibold text-[15px] text-[color:var(--brand-primary)]"
+            style={{ ["--brand-primary" as any]: brand.primary }}
+          >
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
             <a href="#capital-hub" className="hover:underline">Capital Hub</a>
             <a href="#analise-ia" className="hover:underline">Análise IA</a>
@@ -70,194 +144,279 @@ export default function Page() {
         </div>
       </header>
 
-      <main className="pt-20">
+      <main className="pt-24">
+        {/* HERO */}
+        <Section className="relative overflow-hidden">
+          <div
+            className="absolute inset-0 -z-10"
+            style={{
+              background:
+                "radial-gradient(1200px 600px at 50% -100px, rgba(52,72,197,0.25), transparent), linear-gradient(180deg, #CBD4F2, #F6F7FB)",
+            }}
+          />
 
-        {/* Como Funciona */}
-        
-
-        {/* Hero Section */}
-        <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="px-6 py-24 max-w-7xl mx-auto bg-[#CBD4F2] text-center" style={{ backgroundImage: 'url(/assets/pattern-light.svg)', backgroundRepeat: 'repeat', backgroundSize: '300px', opacity: 0.98 }}>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#3448C5]">
-            Está a nascer em Portugal o 1.º ecossistema digital de compra e venda de empresas
-          </h1>
-          <p className="mt-6 text-xl text-gray-700">
-            Conectamos empreendedores com negócios reais e verificados. Se quer comprar ou vender uma empresa em Portugal, o Findyz é o seu ponto de partida.
-          </p>
-          <div className="mt-10">
-            <a
-              href="#cadastro"
-              className="inline-block bg-[#3448C5] hover:bg-[#2B3EAE] text-white text-lg px-8 py-3 rounded-xl shadow-lg transition"
-              aria-label="Cadastrar para o pré-lançamento"
-            >
-              Cadastrar para o pré-lançamento
-            </a>
-          </div>
-        </motion.section>
-
-        
-        {/* Como Funciona */}
-        <section id="como-funciona" className="bg-white py-20 px-6 scroll-mt-20">
-          <div className="max-w-5xl mx-auto text-left">
-            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Como funciona o Findyz?</h2>
-            <p className="text-lg text-gray-800 mb-4">
-              A plataforma Findyz foi pensada para simplificar a compra e venda de empresas em Portugal, garantindo confiança e agilidade em todas as etapas:
-            </p>
-            <ol className="list-decimal pl-6 text-gray-800 space-y-3">
-              <li><strong>Criação de perfil verificado:</strong> compradores e empresas passam por verificação antes de serem publicados.</li>
-              <li><strong>Validação do negócio:</strong> através de dados financeiros e critérios de qualidade, analisamos se a empresa está pronta para venda.</li>
-              <li><strong>Simulação de valuation:</strong> com o nosso simulador, vendedores podem obter uma estimativa automática do valor do negócio.</li>
-              <li><strong>Matching inteligente:</strong> conectamos empresas a potenciais compradores conforme perfil e interesse.</li>
-              <li><strong>Capital Hub:</strong> oferecemos suporte com capital, sócios estratégicos ou financiamento bancário.</li>
-              <li><strong>Fecho seguro:</strong> a operação é finalizada com acompanhamento legal e pagamento em ambiente escrow.</li>
-            </ol>
-          </div>
-        </section>
-
-$1
-        <section className="bg-[#CBD4F2] py-20 text-gray-800">
-          <div className="max-w-4xl mx-auto text-left">
-            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Porquê a Findyz?</h2>
-            <p className="text-lg mb-4">Somos a primeira plataforma em Portugal a unir tecnologia, confiança e acesso a capital para facilitar a compra e venda de empresas.</p>
-<div className="mt-8 grid md:grid-cols-2 gap-6">
-  {[
-    {
-      icon: <Search className="text-[#3448C5]" size={24} />,
-      title: "Empresas e compradores verificados",
-      desc: "Confiança em cada negócio."
-    },
-    {
-      icon: <Lock className="text-[#3448C5]" size={24} />,
-      title: "Valuation e diagnóstico com IA",
-      desc: "Análise inteligente do negócio."
-    },
-    {
-      icon: <Banknote className="text-[#3448C5]" size={24} />,
-      title: "Parcerias com investidores",
-      desc: "Conectamos com capital estratégico."
-    },
-    {
-      icon: <Shuffle className="text-[#3448C5]" size={24} />,
-      title: "Modelos financeiros flexíveis",
-      desc: "Equity, LBO, híbrido — escolha o melhor."
-    },
-    {
-      icon: <Briefcase className="text-[#3448C5]" size={24} />,
-      title: "Suporte jurídico e estratégico",
-      desc: "Do início ao fecho do negócio."
-    },
-    {
-      icon: <Users className="text-[#3448C5]" size={24} />,
-      title: "Apoio a searchers",
-      desc: "Busca por investidores, estrutura de capital e due diligence."
-    }
-  ].map((item, i) => (
-    <div key={i} className="flex gap-4 items-start">
-      {item.icon}
-      <div>
-        <h4 className="text-xl font-semibold text-[#3448C5]">{item.title}</h4>
-        <p className="text-gray-700">{item.desc}</p>
-      </div>
-    </div>
-  ))}
-</div>
-  
-          </div>
-        </section>
-
-        {/* Simulador com lógica avançada */}
-        <section id="analise-ia" className="bg-white py-20 px-6 scroll-mt-20">
-  <div className="max-w-5xl mx-auto text-left">
-    <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Análise com Inteligência Artificial</h2>
-    <p className="text-lg text-gray-800 mb-4">
-      Usamos algoritmos de IA para dar suporte a vendedores e compradores na avaliação dos negócios. Com base nos dados inseridos, a plataforma calcula automaticamente o valuation, identifica riscos e sugere a estrutura de compra mais adequada.
-    </p>
-    <ul className="list-disc pl-6 text-gray-800 space-y-3">
-      <li><strong>Valuation automatizado:</strong> baseado em métricas como lucro, receita e tempo de operação.</li>
-      <li><strong>Modelos flexíveis:</strong> sugerimos estruturas de aquisição como LBO, equity total ou modelo híbrido.</li>
-      <li><strong>Análise de riscos:</strong> indicadores ajudam a identificar estabilidade do negócio, riscos legais ou operacionais.</li>
-      <li><strong>Comparação de múltiplos:</strong> benchmark com transações similares no mercado português.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="capital-hub" className="px-4 md:px-10 py-20 bg-[#CBD4F2] scroll-mt-20">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-left text-[#3448C5]">Findyz Capital Hub</h2>
-            <p className="mt-4 text-left text-[#3448C5] text-lg max-w-5xl">
-              Oferecemos soluções financeiras e parcerias estratégicas para facilitar o fecho do negócio — com segurança, flexibilidade e agilidade.
-           </p>
-
-            <ul className="mt-8 space-y-4 text-lg text-gray-800 max-w-6xl mx-auto">
-              <li className="flex items-start gap-2"><Lock className="text-[#3448C5] mt-1" size={20} /> <strong>Pagamento seguro (escrow)</strong> — com integração Mangopay, o valor fica retido até ambas as partes confirmarem o negócio</li>
-              <li className="flex items-start gap-2"><Users className="text-[#3448C5] mt-1" size={20} /> <strong>Busca por investidores</strong> — conectamos com investidores individuais e fundos interessados em aquisições conjuntas</li>
-              <li className="flex items-start gap-2"><UserPlus className="text-[#3448C5] mt-1" size={20} /> <strong>Busca por sócios estratégicos</strong> — encontre parceiros que complementam capital e experiência</li>
-              <li className="flex items-start gap-2"><Banknote className="text-[#3448C5] mt-1" size={20} /> <strong>Financiamento bancário</strong> — parceria com bancos portugueses para facilitar crédito empresarial</li>
-              <li className="flex items-start gap-2"><Briefcase className="text-[#3448C5] mt-1" size={20} /> <strong>Leveraged Buyout</strong> — estrutura em que a própria empresa adquirida financia parte da compra</li>
-              <li className="flex items-start gap-2"><Shuffle className="text-[#3448C5] mt-1" size={20} /> <strong>Modelo híbrido</strong> — misture diferentes fontes e simule a melhor estrutura para o seu caso</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="bg-[#DDE1F9] py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-[#3448C5] mb-6">Simule o valor do seu negócio</h2>
-            <p className="text-lg text-[#3448C5] mb-8">Preencha os dados abaixo e receba uma estimativa baseada no mercado</p>
-            <form onSubmit={handleValuationSubmit} className="space-y-4 text-left">
-              <input name="colaboradores" type="number" placeholder="N.º de colaboradores" className="w-full border p-3 rounded-lg shadow-sm" aria-label="N.º de colaboradores" required />
-              <textarea name="extra" rows="3" placeholder="Informações adicionais relevantes (ex: contratos, ativos, contexto da venda)" className="w-full border p-3 rounded-lg shadow-sm"></textarea>
-              <input name="receita" type="number" placeholder="Receita anual (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Receita anual" required />
-              <input name="lucro" type="number" placeholder="Lucro líquido (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Lucro líquido" required />
-              <input name="tempo" type="number" placeholder="Tempo de operação (anos)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Tempo de operação" required />
-              <button type="submit" className="w-full bg-[#3448C5] hover:bg-[#2B3EAE] text-white py-3 rounded-lg" aria-label="Calcular Valuation">Calcular</button>
-            </form>
-            {valuation && (
-              <div className="mt-6 text-xl text-[#3448C5]">
-                Valuation estimado: <strong>€ {valuation}</strong>
+          <div className="max-w-7xl mx-auto px-6 py-24 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl md:text-5xl font-extrabold leading-tight text-[color:var(--brand-primary)]"
+                style={{ ["--brand-primary" as any]: brand.primary }}
+              >
+                Está a nascer o 1.º ecossistema digital de compra e venda de empresas em Portugal
+              </motion.h1>
+              <p className="mt-6 text-lg md:text-xl text-gray-700">
+                Conectamos empreendedores com negócios reais e verificados. Se quer comprar ou vender uma empresa em Portugal, o Findyz é o seu ponto de partida.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#cadastro"
+                  className="inline-flex items-center gap-2 bg-[color:var(--brand-primary)] hover:brightness-110 text-white text-base px-6 py-3 rounded-xl shadow-md transition"
+                  style={{ ["--brand-primary" as any]: brand.primary }}
+                  aria-label="Cadastrar para o pré-lançamento"
+                >
+                  Começar agora <ArrowRight size={18} />
+                </a>
+                <a
+                  href="#como-funciona"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl ring-1 ring-black/10 bg-white hover:bg-white/70"
+                >
+                  Ver como funciona
+                </a>
               </div>
-            )}
-          </div>
-        </section>
-        {/* FAQ Section */}
-        <section className="px-6 py-24 bg-[#F6F7FB]">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-[#3448C5] mb-10">Perguntas Frequentes</h2>
-            <div className="space-y-6 text-gray-800 text-lg">
-              <div>
-                <h3 className="font-semibold">Quem pode comprar uma empresa no Findyz?</h3>
-                <p>Qualquer empreendedor ou investidor verificado com interesse em adquirir negócios em funcionamento.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Como sei que os dados são confiáveis?</h3>
-                <p>Todos os perfis — tanto de empresas como de compradores — são verificados antes de serem publicados.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">É possível simular o valor do meu negócio?</h3>
-                <p>Sim! Aceda à secção de simulação e insira os dados financeiros para obter uma estimativa automática.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">O Findyz cobra comissão?</h3>
-                <p>Durante o pré-lançamento, o acesso é gratuito. Após isso, poderá haver planos comissões apenas sobre transações bem-sucedidas.</p>
+              <div className="mt-8 flex items-center gap-4 text-sm text-gray-600">
+                <ShieldCheck size={18} className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
+                Perfis verificados | Pagamento escrow | Apoio jurídico
               </div>
             </div>
+
+            {/* Right hero card */}
+            <Card className="p-6 md:p-8">
+              <div className="flex items-center gap-3">
+                <Sparkles className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
+                <h3 className="text-xl font-semibold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+                  Simulador rápido de valuation
+                </h3>
+              </div>
+              <p className="mt-2 text-gray-700 text-sm">
+                Preencha os campos e veja uma estimativa baseada em múltiplos médios do mercado.
+              </p>
+              <form onSubmit={handleValuationSubmit} className="mt-6 grid grid-cols-1 gap-3">
+                <input name="colaboradores" type="number" placeholder="N.º de colaboradores" className="w-full border p-3 rounded-lg shadow-sm" aria-label="N.º de colaboradores" required />
+                <textarea name="extra" rows={3} placeholder="Informações adicionais (ex: contratos, ativos, contexto)" className="w-full border p-3 rounded-lg shadow-sm" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <input name="receita" type="number" placeholder="Receita anual (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Receita anual" required />
+                  <input name="lucro" type="number" placeholder="Lucro líquido (€)" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Lucro líquido" required />
+                  <input name="tempo" type="number" placeholder="Anos de operação" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Tempo de operação" required />
+                </div>
+                <button type="submit" className="w-full bg-[color:var(--brand-primary)] hover:brightness-110 text-white py-3 rounded-lg flex items-center justify-center gap-2"
+                  style={{ ["--brand-primary" as any]: brand.primary }}
+                  aria-label="Calcular Valuation"
+                >
+                  <Calculator size={18} /> Calcular
+                </button>
+              </form>
+              {valuation && (
+                <div className="mt-4 text-lg text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+                  Valuation estimado: <strong>€ {valuation}</strong>
+                </div>
+              )}
+            </Card>
           </div>
-        </section>
-        {/* Formulário de pré-cadastro */}
-        <section id="cadastro" className="px-6 py-24 bg-gray-50">
-          <h3 className="text-2xl font-semibold text-center mb-6 text-[#3448C5]">
-            Quer vender ou comprar uma empresa?
-          </h3>
-          <form action="https://formspree.io/f/mldbeqnd" method="POST" className="max-w-2xl mx-auto space-y-4">
-            <input type="email" name="email" required placeholder="Seu e-mail" className="w-full border p-3 rounded-lg shadow-sm" />
-            <select name="interesse" required className="w-full border p-3 rounded-lg shadow-sm">
-              <option value="">Tenho interesse em...</option>
-              <option value="comprar">Comprar uma empresa</option>
-              <option value="vender">Vender minha empresa</option>
-            </select>
-            <textarea name="mensagem" rows="4" placeholder="Conte mais sobre o que procura ou oferece" className="w-full border p-3 rounded-lg shadow-sm"></textarea>
-            <button type="submit" className="w-full bg-[#3448C5] hover:bg-[#2B3EAE] text-white py-3 rounded-lg">Enviar</button>
-          </form>
-        </section>
+        </Section>
+
+        {/* COMO FUNCIONA - fluxo em passos */}
+        <Section id="como-funciona" className="px-6 py-20 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)] mb-6" style={{ ["--brand-primary" as any]: brand.primary }}>Como funciona o Findyz?</h2>
+            <p className="text-lg text-gray-700 mb-10 max-w-3xl">
+              Simplificamos a compra e venda com verificação, análise e apoio a capital — tudo num só fluxo.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: <UserPlus className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Perfil verificado",
+                  desc: "Compradores e empresas passam por verificação antes de irem ao ar."
+                },
+                {
+                  icon: <Search className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Validação do negócio",
+                  desc: "Revisão de dados financeiros e critérios de qualidade."
+                },
+                {
+                  icon: <Calculator className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Simulação de valuation",
+                  desc: "Estimativa automática com base em múltiplos."
+                },
+                {
+                  icon: <Shuffle className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Matching inteligente",
+                  desc: "Conectamos perfis compatíveis conforme interesse e região."
+                },
+                {
+                  icon: <Banknote className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Capital Hub",
+                  desc: "Investidores, sócios e financiamento bancário ao seu alcance."
+                },
+                {
+                  icon: <Lock className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Fecho seguro",
+                  desc: "Escrow, apoio jurídico e acompanhamento até à assinatura."
+                },
+              ].map((item, i) => (
+                <Card key={i} className="p-6">
+                  <div className="flex items-start gap-4">
+                    {item.icon}
+                    <div>
+                      <h4 className="text-xl font-semibold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>{item.title}</h4>
+                      <p className="text-gray-700">{item.desc}</p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* CAPITAL HUB */}
+        <Section id="capital-hub" className="px-6 py-20 bg-[color:var(--tint1)]" style={{ ["--tint1" as any]: brand.tint1 }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center gap-3 mb-2">
+              <Banknote className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
+              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>Findyz Capital Hub</h2>
+            </div>
+            <p className="text-[color:var(--brand-primary)] text-lg max-w-4xl">
+              Soluções financeiras e parcerias estratégicas para fechar o negócio com segurança, flexibilidade e agilidade.
+            </p>
+
+            <div className="mt-8 grid md:grid-cols-2 gap-6">
+              {[
+                { icon: <Lock />, title: "Pagamento seguro (escrow)", text: "Valor retido até a confirmação de ambas as partes." },
+                { icon: <Users />, title: "Busca por investidores", text: "Relação com investidores individuais e fundos." },
+                { icon: <UserPlus />, title: "Sócios estratégicos", text: "Parceiros que complementam capital e experiência." },
+                { icon: <Banknote />, title: "Financiamento bancário", text: "Parcerias com bancos portugueses para crédito." },
+                { icon: <Briefcase />, title: "Leveraged Buyout", text: "Estrutura onde a empresa adquirida financia parte da compra." },
+                { icon: <Shuffle />, title: "Modelo híbrido", text: "Misture fontes e simule a melhor estrutura." },
+              ].map((f, i) => (
+                <Card key={i} className="p-5">
+                  <div className="flex gap-3 items-start">
+                    <div className="mt-1 text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>{f.icon}</div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>{f.title}</h4>
+                      <p className="text-gray-700">{f.text}</p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* ANÁLISE IA */}
+        <Section id="analise-ia" className="px-6 py-20 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center gap-3 mb-2">
+              <Rocket className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
+              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>Análise com Inteligência Artificial</h2>
+            </div>
+            <p className="text-lg text-gray-800 mb-6 max-w-3xl">
+              Algoritmos suportam vendedores e compradores na avaliação de negócios: valuation, riscos e estruturação da compra.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="p-6">
+                <ul className="list-disc pl-5 space-y-2 text-gray-800">
+                  <li><strong>Valuation automatizado:</strong> lucro, receita e tempo de operação.</li>
+                  <li><strong>Modelos flexíveis:</strong> LBO, equity total ou híbrido.</li>
+                  <li><strong>Análise de riscos:</strong> estabilidade, aspetos legais e operacionais.</li>
+                  <li><strong>Comparação de múltiplos:</strong> benchmark com mercado português.</li>
+                </ul>
+              </Card>
+              <Card className="p-6 flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-4 w-full">
+                  {["Due diligence", "Múltiplos", "Risco", "Estrutura"].map((k, i) => (
+                    <div key={i} className="rounded-xl bg-[color:var(--tint2)] p-4 text-center text-[color:var(--brand-primary)] font-semibold"
+                      style={{ ["--tint2" as any]: brand.tint2, ["--brand-primary" as any]: brand.primary }}
+                    >
+                      {k}
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </div>
+        </Section>
+
+        {/* CTA Intermédio */}
+        <Section className="px-6 py-16" >
+          <Card className="max-w-6xl mx-auto p-8 md:p-10 text-center bg-[color:var(--tint2)]" style={{ ["--tint2" as any]: brand.tint2 }}>
+            <div className="flex items-center justify-center gap-3 text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+              <Building2 />
+              <h3 className="text-2xl md:text-3xl font-bold">Tem uma empresa para vender? Ou quer comprar?</h3>
+            </div>
+            <p className="mt-3 text-gray-700 max-w-2xl mx-auto">Registe o interesse e falamos consigo na abertura do pré‑lançamento.</p>
+            <div className="mt-6">
+              <a href="#cadastro" className="inline-flex items-center gap-2 bg-[color:var(--brand-primary)] hover:brightness-110 text-white px-6 py-3 rounded-xl">
+                Registar interesse <ArrowRight size={18} />
+              </a>
+            </div>
+          </Card>
+        </Section>
+
+        {/* FAQ */}
+        <Section className="px-6 py-20 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-[color:var(--brand-primary)] mb-8" style={{ ["--brand-primary" as any]: brand.primary }}>Perguntas Frequentes</h2>
+            <div className="grid md:grid-cols-2 gap-6 text-gray-800 text-base">
+              {[
+                { q: "Quem pode comprar uma empresa no Findyz?", a: "Qualquer empreendedor ou investidor verificado com interesse em adquirir negócios em funcionamento." },
+                { q: "Como sei que os dados são confiáveis?", a: "Todos os perfis — tanto de empresas como de compradores — são verificados antes de serem publicados." },
+                { q: "É possível simular o valor do meu negócio?", a: "Sim! Utilize o simulador para obter uma estimativa automática." },
+                { q: "O Findyz cobra comissão?", a: "Durante o pré‑lançamento o acesso é gratuito. Depois, poderão existir planos e/ou comissão sobre transações concluídas." },
+              ].map((item, i) => (
+                <Card key={i} className="p-5">
+                  <h3 className="font-semibold mb-1">{item.q}</h3>
+                  <p>{item.a}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* FORM */}
+        <Section id="cadastro" className="px-6 py-20 bg-[color:var(--paper)]" style={{ ["--paper" as any]: brand.paper }}>
+          <div className="max-w-2xl mx-auto">
+            <h3 className="text-2xl font-semibold text-center mb-6 text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+              Quer vender ou comprar uma empresa?
+            </h3>
+            <form action="https://formspree.io/f/mldbeqnd" method="POST" className="space-y-4">
+              <input type="email" name="email" required placeholder="Seu e‑mail" className="w-full border p-3 rounded-lg shadow-sm" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <input type="text" name="nome" placeholder="Nome" className="w-full border p-3 rounded-lg shadow-sm" />
+                <input type="tel" name="telefone" placeholder="Telefone" className="w-full border p-3 rounded-lg shadow-sm" />
+              </div>
+              <select name="interesse" required className="w-full border p-3 rounded-lg shadow-sm">
+                <option value="">Tenho interesse em...</option>
+                <option value="comprar">Comprar uma empresa</option>
+                <option value="vender">Vender minha empresa</option>
+              </select>
+              <textarea name="mensagem" rows={4} placeholder="Conte mais sobre o que procura ou oferece" className="w-full border p-3 rounded-lg shadow-sm" />
+              <button type="submit" className="w-full bg-[color:var(--brand-primary)] hover:brightness-110 text-white py-3 rounded-lg">Enviar</button>
+            </form>
+          </div>
+        </Section>
       </main>
+
+      <footer className="px-6 py-10 bg-white border-t border-black/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <Image src="/assets/findyz_logo_transparent.png" alt="Findyz" width={120} height={50} />
+            <span className="text-sm text-gray-600">© {new Date().getFullYear()} Findyz. Todos os direitos reservados.</span>
+          </div>
+          <div className="text-sm text-gray-600 flex gap-4">
+            <a href="#como-funciona" className="hover:underline">Como funciona</a>
+            <a href="#capital-hub" className="hover:underline">Capital Hub</a>
+            <a href="#analise-ia" className="hover:underline">Análise IA</a>
+            <a href="#cadastro" className="hover:underline">Contato</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
