@@ -1,7 +1,6 @@
 'use client';
 
 import Image from "next/image";
-import Head from "next/head";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -21,15 +20,15 @@ import {
 } from "lucide-react";
 
 /**
- * Findyz landing page — refreshed visual based on the Codesandbox reference
- * - Preserva logo e paleta atual (#3448C5, #CBD4F2, #DDE1F9, tons cinza)
- * - Layout com seções claras, cards animados e fluxo em passos
- * - Totalmente client-side, compatível com Next.js App Router (app/page.jsx)
+ * Findyz landing page — versão JS (sem TypeScript) compatível com Next.js App Router
+ * - Remove tipos TS e casts (ex.: useState<string>, e: React.FormEvent, "as any")
+ * - Mantém logo e paleta (#3448C5 e tints)
+ * - Usa CSS vars no inline style sem casts TS
  */
 export default function Page() {
-  const [valuation, setValuation] = useState<string | null>(null);
+  const [valuation, setValuation] = useState(null);
 
-  function handleValuationSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleValuationSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const receita = parseFloat(String(data.get("receita")));
@@ -37,7 +36,6 @@ export default function Page() {
     const tempo = parseFloat(String(data.get("tempo")));
 
     if (!isNaN(receita) && !isNaN(lucro) && !isNaN(tempo)) {
-      // Fórmula simples e transparente (mesma lógica base do ficheiro anterior)
       const margemLucro = lucro / Math.max(receita, 1);
       const multiploLucro = margemLucro > 0.2 ? 4 : margemLucro > 0.1 ? 3.5 : 3;
       const multiploReceita = tempo > 5 ? 0.4 : 0.3;
@@ -55,19 +53,11 @@ export default function Page() {
     paper: "#F6F7FB",
   };
 
-  const Section = ({
-    id,
-    className = "",
-    children,
-  }: {
-    id?: string;
-    className?: string;
-    children: React.ReactNode;
-  }) => (
+  const Section = ({ id, className = "", children }) => (
     <section id={id} className={`scroll-mt-24 ${className}`}>{children}</section>
   );
 
-  const Card = ({ children, className = "" }: any) => (
+  const Card = ({ children, className = "" }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -81,45 +71,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-[#F6F7FB] text-gray-900">
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Findyz",
-              url: "https://findyz.pt",
-              logo: "/assets/findyz_logo_transparent.png",
-            }),
-          }}
-        />
-        <meta
-          name="google-site-verification"
-          content="EdfXCh222S1MaK2DojP94z1dcDHFHMyV-hg05In1psY"
-        />
-        <title>Findyz | Compre ou venda empresas verificados em Portugal</title>
-        <meta
-          name="description"
-          content="O Findyz liga empreendedores a empresas validadas em Portugal. Compre ou venda negócios com segurança, análise IA e financiamento inteligente."
-        />
-        <meta
-          property="og:title"
-          content="Findyz - Empresas verificadas à venda em Portugal"
-        />
-        <meta
-          property="og:description"
-          content="Plataforma digital para compra e venda de empresas verificados. Registe-se para o pré-lançamento."
-        />
-        <meta property="og:image" content="/assets/findyz_logo_transparent.png" />
-        <link
-          rel="icon"
-          href="/assets/findyz_logo_transparent.png"
-          type="image/png"
-        />
-      </Head>
-
-      {/* Top bar */}
+      {/* HERO + NAV */}
       <header
         className="bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 fixed top-0 left-0 w-full z-50 border-b border-black/5"
       >
@@ -133,8 +85,9 @@ export default function Page() {
               priority
             />
           </div>
-          <nav className="hidden md:flex items-center gap-6 font-semibold text-[15px] text-[color:var(--brand-primary)]"
-            style={{ ["--brand-primary" as any]: brand.primary }}
+          <nav
+            className="hidden md:flex items-center gap-6 font-semibold text-[15px] text-[color:var(--brand-primary)]"
+            style={{ "--brand-primary": brand.primary }}
           >
             <a href="#como-funciona" className="hover:underline">Como Funciona</a>
             <a href="#capital-hub" className="hover:underline">Capital Hub</a>
@@ -162,7 +115,7 @@ export default function Page() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="text-4xl md:text-5xl font-extrabold leading-tight text-[color:var(--brand-primary)]"
-                style={{ ["--brand-primary" as any]: brand.primary }}
+                style={{ "--brand-primary": brand.primary }}
               >
                 Está a nascer o 1.º ecossistema digital de compra e venda de empresas em Portugal
               </motion.h1>
@@ -173,7 +126,7 @@ export default function Page() {
                 <a
                   href="#cadastro"
                   className="inline-flex items-center gap-2 bg-[color:var(--brand-primary)] hover:brightness-110 text-white text-base px-6 py-3 rounded-xl shadow-md transition"
-                  style={{ ["--brand-primary" as any]: brand.primary }}
+                  style={{ "--brand-primary": brand.primary }}
                   aria-label="Cadastrar para o pré-lançamento"
                 >
                   Começar agora <ArrowRight size={18} />
@@ -186,7 +139,7 @@ export default function Page() {
                 </a>
               </div>
               <div className="mt-8 flex items-center gap-4 text-sm text-gray-600">
-                <ShieldCheck size={18} className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
+                <ShieldCheck size={18} className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />
                 Perfis verificados | Pagamento escrow | Apoio jurídico
               </div>
             </div>
@@ -194,8 +147,8 @@ export default function Page() {
             {/* Right hero card */}
             <Card className="p-6 md:p-8">
               <div className="flex items-center gap-3">
-                <Sparkles className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
-                <h3 className="text-xl font-semibold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+                <Sparkles className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />
+                <h3 className="text-xl font-semibold text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>
                   Simulador rápido de valuation
                 </h3>
               </div>
@@ -211,14 +164,14 @@ export default function Page() {
                   <input name="tempo" type="number" placeholder="Anos de operação" className="w-full border p-3 rounded-lg shadow-sm" aria-label="Tempo de operação" required />
                 </div>
                 <button type="submit" className="w-full bg-[color:var(--brand-primary)] hover:brightness-110 text-white py-3 rounded-lg flex items-center justify-center gap-2"
-                  style={{ ["--brand-primary" as any]: brand.primary }}
+                  style={{ "--brand-primary": brand.primary }}
                   aria-label="Calcular Valuation"
                 >
                   <Calculator size={18} /> Calcular
                 </button>
               </form>
               {valuation && (
-                <div className="mt-4 text-lg text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+                <div className="mt-4 text-lg text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>
                   Valuation estimado: <strong>€ {valuation}</strong>
                 </div>
               )}
@@ -226,10 +179,10 @@ export default function Page() {
           </div>
         </Section>
 
-        {/* COMO FUNCIONA - fluxo em passos */}
+        {/* COMO FUNCIONA */}
         <Section id="como-funciona" className="px-6 py-20 bg-white">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)] mb-6" style={{ ["--brand-primary" as any]: brand.primary }}>Como funciona o Findyz?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)] mb-6" style={{ "--brand-primary": brand.primary }}>Como funciona o Findyz?</h2>
             <p className="text-lg text-gray-700 mb-10 max-w-3xl">
               Simplificamos a compra e venda com verificação, análise e apoio a capital — tudo num só fluxo.
             </p>
@@ -237,27 +190,27 @@ export default function Page() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  icon: <UserPlus className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Perfil verificado",
+                  icon: <UserPlus className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />, title: "Perfil verificado",
                   desc: "Compradores e empresas passam por verificação antes de irem ao ar."
                 },
                 {
-                  icon: <Search className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Validação do negócio",
+                  icon: <Search className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />, title: "Validação do negócio",
                   desc: "Revisão de dados financeiros e critérios de qualidade."
                 },
                 {
-                  icon: <Calculator className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Simulação de valuation",
+                  icon: <Calculator className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />, title: "Simulação de valuation",
                   desc: "Estimativa automática com base em múltiplos."
                 },
                 {
-                  icon: <Shuffle className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Matching inteligente",
+                  icon: <Shuffle className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />, title: "Matching inteligente",
                   desc: "Conectamos perfis compatíveis conforme interesse e região."
                 },
                 {
-                  icon: <Banknote className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Capital Hub",
+                  icon: <Banknote className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />, title: "Capital Hub",
                   desc: "Investidores, sócios e financiamento bancário ao seu alcance."
                 },
                 {
-                  icon: <Lock className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />, title: "Fecho seguro",
+                  icon: <Lock className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />, title: "Fecho seguro",
                   desc: "Escrow, apoio jurídico e acompanhamento até à assinatura."
                 },
               ].map((item, i) => (
@@ -265,7 +218,7 @@ export default function Page() {
                   <div className="flex items-start gap-4">
                     {item.icon}
                     <div>
-                      <h4 className="text-xl font-semibold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>{item.title}</h4>
+                      <h4 className="text-xl font-semibold text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>{item.title}</h4>
                       <p className="text-gray-700">{item.desc}</p>
                     </div>
                   </div>
@@ -276,13 +229,13 @@ export default function Page() {
         </Section>
 
         {/* CAPITAL HUB */}
-        <Section id="capital-hub" className="px-6 py-20 bg-[color:var(--tint1)]" style={{ ["--tint1" as any]: brand.tint1 }}>
+        <Section id="capital-hub" className="px-6 py-20 bg-[color:var(--tint1)]" style={{ "--tint1": brand.tint1 }}>
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
-              <Banknote className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
-              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>Findyz Capital Hub</h2>
+              <Banknote className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />
+              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>Findyz Capital Hub</h2>
             </div>
-            <p className="text-[color:var(--brand-primary)] text-lg max-w-4xl">
+            <p className="text-[color:var(--brand-primary)] text-lg max-w-4xl" style={{ "--brand-primary": brand.primary }}>
               Soluções financeiras e parcerias estratégicas para fechar o negócio com segurança, flexibilidade e agilidade.
             </p>
 
@@ -297,9 +250,9 @@ export default function Page() {
               ].map((f, i) => (
                 <Card key={i} className="p-5">
                   <div className="flex gap-3 items-start">
-                    <div className="mt-1 text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>{f.icon}</div>
+                    <div className="mt-1 text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>{f.icon}</div>
                     <div>
-                      <h4 className="text-lg font-semibold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>{f.title}</h4>
+                      <h4 className="text-lg font-semibold text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>{f.title}</h4>
                       <p className="text-gray-700">{f.text}</p>
                     </div>
                   </div>
@@ -313,8 +266,8 @@ export default function Page() {
         <Section id="analise-ia" className="px-6 py-20 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
-              <Rocket className="text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }} />
-              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>Análise com Inteligência Artificial</h2>
+              <Rocket className="text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }} />
+              <h2 className="text-3xl md:text-4xl font-bold text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>Análise com Inteligência Artificial</h2>
             </div>
             <p className="text-lg text-gray-800 mb-6 max-w-3xl">
               Algoritmos suportam vendedores e compradores na avaliação de negócios: valuation, riscos e estruturação da compra.
@@ -331,9 +284,7 @@ export default function Page() {
               <Card className="p-6 flex items-center justify-center">
                 <div className="grid grid-cols-2 gap-4 w-full">
                   {["Due diligence", "Múltiplos", "Risco", "Estrutura"].map((k, i) => (
-                    <div key={i} className="rounded-xl bg-[color:var(--tint2)] p-4 text-center text-[color:var(--brand-primary)] font-semibold"
-                      style={{ ["--tint2" as any]: brand.tint2, ["--brand-primary" as any]: brand.primary }}
-                    >
+                    <div key={i} className="rounded-xl bg-[color:var(--tint2)] p-4 text-center text-[color:var(--brand-primary)] font-semibold" style={{ "--tint2": brand.tint2, "--brand-primary": brand.primary }}>
                       {k}
                     </div>
                   ))}
@@ -345,14 +296,14 @@ export default function Page() {
 
         {/* CTA Intermédio */}
         <Section className="px-6 py-16" >
-          <Card className="max-w-6xl mx-auto p-8 md:p-10 text-center bg-[color:var(--tint2)]" style={{ ["--tint2" as any]: brand.tint2 }}>
-            <div className="flex items-center justify-center gap-3 text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+          <Card className="max-w-6xl mx-auto p-8 md:p-10 text-center bg-[color:var(--tint2)]" style={{ "--tint2": brand.tint2 }}>
+            <div className="flex items-center justify-center gap-3 text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>
               <Building2 />
               <h3 className="text-2xl md:text-3xl font-bold">Tem uma empresa para vender? Ou quer comprar?</h3>
             </div>
             <p className="mt-3 text-gray-700 max-w-2xl mx-auto">Registe o interesse e falamos consigo na abertura do pré‑lançamento.</p>
             <div className="mt-6">
-              <a href="#cadastro" className="inline-flex items-center gap-2 bg-[color:var(--brand-primary)] hover:brightness-110 text-white px-6 py-3 rounded-xl">
+              <a href="#cadastro" className="inline-flex items-center gap-2 bg-[color:var(--brand-primary)] hover:brightness-110 text-white px-6 py-3 rounded-xl" style={{ "--brand-primary": brand.primary }}>
                 Registar interesse <ArrowRight size={18} />
               </a>
             </div>
@@ -362,7 +313,7 @@ export default function Page() {
         {/* FAQ */}
         <Section className="px-6 py-20 bg-white">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-[color:var(--brand-primary)] mb-8" style={{ ["--brand-primary" as any]: brand.primary }}>Perguntas Frequentes</h2>
+            <h2 className="text-3xl font-bold text-center text-[color:var(--brand-primary)] mb-8" style={{ "--brand-primary": brand.primary }}>Perguntas Frequentes</h2>
             <div className="grid md:grid-cols-2 gap-6 text-gray-800 text-base">
               {[
                 { q: "Quem pode comprar uma empresa no Findyz?", a: "Qualquer empreendedor ou investidor verificado com interesse em adquirir negócios em funcionamento." },
@@ -380,9 +331,9 @@ export default function Page() {
         </Section>
 
         {/* FORM */}
-        <Section id="cadastro" className="px-6 py-20 bg-[color:var(--paper)]" style={{ ["--paper" as any]: brand.paper }}>
+        <Section id="cadastro" className="px-6 py-20 bg-[color:var(--paper)]" style={{ "--paper": brand.paper }}>
           <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-center mb-6 text-[color:var(--brand-primary)]" style={{ ["--brand-primary" as any]: brand.primary }}>
+            <h3 className="text-2xl font-semibold text-center mb-6 text-[color:var(--brand-primary)]" style={{ "--brand-primary": brand.primary }}>
               Quer vender ou comprar uma empresa?
             </h3>
             <form action="https://formspree.io/f/mldbeqnd" method="POST" className="space-y-4">
@@ -397,7 +348,7 @@ export default function Page() {
                 <option value="vender">Vender minha empresa</option>
               </select>
               <textarea name="mensagem" rows={4} placeholder="Conte mais sobre o que procura ou oferece" className="w-full border p-3 rounded-lg shadow-sm" />
-              <button type="submit" className="w-full bg-[color:var(--brand-primary)] hover:brightness-110 text-white py-3 rounded-lg">Enviar</button>
+              <button type="submit" className="w-full bg-[color:var(--brand-primary)] hover:brightness-110 text-white py-3 rounded-lg" style={{ "--brand-primary": brand.primary }}>Enviar</button>
             </form>
           </div>
         </Section>
