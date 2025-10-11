@@ -1,21 +1,35 @@
 {
   "name": "findyz",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
-    "framer-motion": "^12.23.11",
-    "lucide-react": "^0.276.0",
     "next": "14.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@prisma/client": "^5.18.0",
+    "framer-motion": "^12.23.11",
+    "lucide-react": "^0.276.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "prisma": "^5.18.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^3.4.17"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   }
 }
