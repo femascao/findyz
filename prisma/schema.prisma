@@ -1,0 +1,132 @@
+// /prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum Role {
+  BUYER
+  SELLER
+  ADMIN
+}
+
+enum ListingStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum DealStatus {
+  INITIATED
+  KYC_PENDING
+  KYC_APPROVED
+  ESCROW_HOLD
+  COMPLETED
+  CANCELLED
+}
+
+enum KycStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum EscrowStatus {
+  HOLD
+  RELEASED
+  REFUNDED
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String?
+  role      Role      @default(BUYER)
+  createdAt DateTime  @default(now())
+  companies Company[]
+  deals     Deal[]    @relation("BuyerDeals")
+  kyc       KycCheck?
+}
+
+model Company {
+  id        String    @id @default(cuid())
+  owner     User      @relation(fields: [ownerId], references: [id])
+  ownerId   String
+  name      String
+  sector    String?
+  location  String?
+  revenue   Int? // €
+  profit    Int? // €
+  years     Int?
+  employees Int?
+  listings  Listing[]
+  createdAt DateTime  @default(now())
+}
+
+model Listing {
+  id        String        @id @default(cuid())
+  company   Company       @relation(fields: [companyId], references: [id])
+  companyId String
+  title     String
+  teaser    String?
+  status    ListingStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+
+  // ← lado oposto da relação com Deal
+  deals Deal[] @relation("ListingDeals")
+}
+
+model Deal {
+  id String @id @default(cuid())
+
+  // → relação explícita com nome "ListingDeals"
+  listing   Listing @relation("ListingDeals", fields: [listingId], references: [id])
+  listingId String
+
+  // relação com o comprador (já estava certa)
+  buyer   User   @relation("BuyerDeals", fields: [buyerId], references: [id])
+  buyerId String
+
+  status    DealStatus @default(INITIATED)
+  createdAt DateTime   @default(now())
+
+  escrow EscrowTransaction?
+}
+
+model KycCheck {
+  id         String    @id @default(cuid())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String    @unique
+  status     KycStatus @default(PENDING)
+  provider   String    @default("mock")
+  externalId String?
+  createdAt  DateTime  @default(now())
+}
+
+model EscrowTransaction {
+  id         String       @id @default(cuid())
+  deal       Deal         @relation(fields: [dealId], references: [id])
+  dealId     String       @unique
+  amount     Int // € em centavos no futuro
+  currency   String       @default("EUR")
+  status     EscrowStatus @default(HOLD)
+  provider   String       @default("mock")
+  externalId String?
+  createdAt  DateTime     @default(now())
+}
+
+model ContactInterest {
+  id        String   @id @default(cuid())
+  email     String
+  name      String?
+  phone     String?
+  interest  String // "comprar" | "vender"
+  message   String?
+  createdAt DateTime @default(now())
+}
