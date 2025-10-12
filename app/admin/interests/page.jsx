@@ -15,8 +15,15 @@ export default function AdminInterestsPage() {
       const res = await fetch("/api/admin/interests", {
         headers: { "x-admin-token": token },
       });
+      const ct = res.headers.get("content-type") || "";
+      if (!ct.includes("application/json")) {
+        const text = await res.text();
+        throw new Error(
+          `HTTP ${res.status} ${res.statusText} — ${text.slice(0, 200)}`,
+        );
+      }
       const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Erro ao carregar");
+      if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`);
       setRows(data);
     } catch (e) {
       setErr(e.message);
