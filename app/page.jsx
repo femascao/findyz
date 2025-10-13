@@ -126,7 +126,15 @@ export default function Page() {
   );
 
   return (
-    <div className="min-h-screen bg-[#F6F7FB] text-gray-900">
+    <div
+      className="min-h-screen bg-[#F6F7FB] text-gray-900"
+      style={{
+        "--brand-primary": "#3448C5",
+        "--tint1": "#CBD4F2",
+        "--tint2": "#DDE1F9",
+        "--paper": "#F6F7FB",
+      }}
+    >
       {/* Top bar */}
       <header className="fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
@@ -566,7 +574,8 @@ export default function Page() {
             <div className="mt-6">
               <a
                 href="#cadastro"
-                className="inline-flex items-center gap-2 rounded-xl bg-[color:var(--brand-primary)] px-6 py-3 text-white hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-white shadow-md transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style={{ backgroundColor: "#3448C5" }}
               >
                 Registar interesse <ArrowRight size={18} />
               </a>
