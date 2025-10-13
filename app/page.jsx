@@ -90,27 +90,30 @@ export default function Page() {
         body: JSON.stringify(payload),
       });
 
-      // Tenta ler JSON, mas não falha se não vier
-      let data = null;
-      const ct = res.headers.get("content-type") || "";
-      if (ct.includes("application/json")) {
-        try {
-          data = await res.json();
-        } catch {}
-      }
-
-      // Se salvou (2xx), tratamos como sucesso MESMO se o JSON falhar
+      // ✅ Regra simples: se for 2xx, tratamos como sucesso.
       if (res.ok) {
         setFeedback("Recebido! Entraremos em contacto em breve.");
         setFeedbackType("ok");
         e.currentTarget.reset();
+
+        // opcional: garantir que o utilizador vê a mensagem no bloco do formulário
+        const sec = document.getElementById("cadastro");
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
         return;
       }
 
-      // Se não for 2xx, tenta mostrar mensagem do backend
-      const msg = data?.error || `Erro ${res.status}`;
+      // ❌ Não-2xx: tenta extrair mensagem do backend (JSON) e mostra
+      let msg = `Erro ${res.status}`;
+      const ct = res.headers.get("content-type") || "";
+      if (ct.includes("application/json")) {
+        try {
+          const data = await res.json();
+          if (data?.error) msg = data.error;
+        } catch {}
+      }
       throw new Error(msg);
-    } catch (_err) {
+    } catch (err) {
+      console.debug("register-interest error:", err);
       setFeedback(
         "Erro de rede. Se estiver num Preview protegido do Vercel, abra o preview e aplique o bypass ou desative a proteção temporariamente.",
       );
@@ -656,7 +659,11 @@ export default function Page() {
               Quer vender ou comprar uma empresa?
             </h3>
 
-            <form onSubmit={handleRegisterSubmit} className="space-y-4">
+            <form
+              onSubmit={handleRegisterSubmit}
+              className="space-y-4"
+              noValidate
+            >
               <input
                 type="email"
                 name="email"
@@ -698,15 +705,14 @@ export default function Page() {
                 type="submit"
                 disabled={sending}
                 className="w-full rounded-lg bg-[color:var(--brand-primary)] py-3 text-white hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
-                style={{ "--brand-primary": brand.primary }}
+                style={{ "--brand-primary": "#3448C5" }}
               >
                 {sending ? "Enviando..." : "Enviar"}
               </button>
+
               {feedback && (
                 <p
-                  className={`mt-2 text-sm ${
-                    feedbackType === "ok" ? "text-green-700" : "text-red-600"
-                  }`}
+                  className={`mt-2 text-sm ${feedbackType === "ok" ? "text-green-700" : "text-red-600"}`}
                 >
                   {feedback}
                 </p>
