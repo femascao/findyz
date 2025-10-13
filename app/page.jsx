@@ -63,11 +63,13 @@ export default function Page() {
   // --- ESTADOS DO FORM DE CONTATO ---
   const [sending, setSending] = useState(false);
   const [feedback, setFeedback] = useState(null);
+  const [feedbackType, setFeedbackType] = useState("idle"); // "ok" | "error" | "idle"
 
   async function handleRegisterSubmit(e) {
     e.preventDefault();
     setSending(true);
     setFeedback(null);
+    setFeedbackType("idle");
 
     const form = new FormData(e.currentTarget);
     const payload = {
@@ -88,31 +90,31 @@ export default function Page() {
         body: JSON.stringify(payload),
       });
 
-      // Se Vercel preview protegido responder com HTML, não tente .json()
+      // Tenta ler JSON, mas não falha se não vier
+      let data = null;
       const ct = res.headers.get("content-type") || "";
-      if (!ct.includes("application/json")) {
-        const text = await res.text();
-        // Se chegou até aqui é porque o POST provavelmente salvou,
-        // mas a resposta foi bloqueada/substituída (HTML de proteção).
-        // Mostramos uma mensagem amigável.
-        throw new Error(
-          `Resposta não-JSON (Preview protegido?). HTTP ${res.status}.`,
-        );
+      if (ct.includes("application/json")) {
+        try {
+          data = await res.json();
+        } catch {}
       }
 
-      const data = await res.json();
-      if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || `HTTP ${res.status}`);
+      // Se salvou (2xx), tratamos como sucesso MESMO se o JSON falhar
+      if (res.ok) {
+        setFeedback("Recebido! Entraremos em contacto em breve.");
+        setFeedbackType("ok");
+        e.currentTarget.reset();
+        return;
       }
 
-      // SUCESSO
-      setFeedback("Recebido! Entraremos em contacto em breve.");
-      e.currentTarget.reset();
-    } catch (err) {
-      // Se salvou mas proteção trocou a resposta, cairá aqui.
+      // Se não for 2xx, tenta mostrar mensagem do backend
+      const msg = data?.error || `Erro ${res.status}`;
+      throw new Error(msg);
+    } catch (_err) {
       setFeedback(
         "Erro de rede. Se estiver num Preview protegido do Vercel, abra o preview e aplique o bypass ou desative a proteção temporariamente.",
       );
+      setFeedbackType("error");
     } finally {
       setSending(false);
     }
@@ -700,8 +702,15 @@ export default function Page() {
               >
                 {sending ? "Enviando..." : "Enviar"}
               </button>
-
-              {feedback && <p className="mt-2 text-sm">{feedback}</p>}
+              {feedback && (
+                <p
+                  className={`mt-2 text-sm ${
+                    feedbackType === "ok" ? "text-green-700" : "text-red-600"
+                  }`}
+                >
+                  {feedback}
+                </p>
+              )}
             </form>
           </div>
         </Section>
