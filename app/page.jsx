@@ -81,18 +81,38 @@ export default function Page() {
     try {
       const res = await fetch("/api/register-interest", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
         body: JSON.stringify(payload),
       });
-      const data = await res.json();
-      if (res.ok) {
-        setFeedback("Recebido! Entraremos em contacto em breve.");
-        e.currentTarget.reset();
-      } else {
-        setFeedback(data?.error || "Erro ao enviar. Tente novamente.");
+
+      // Se Vercel preview protegido responder com HTML, não tente .json()
+      const ct = res.headers.get("content-type") || "";
+      if (!ct.includes("application/json")) {
+        const text = await res.text();
+        // Se chegou até aqui é porque o POST provavelmente salvou,
+        // mas a resposta foi bloqueada/substituída (HTML de proteção).
+        // Mostramos uma mensagem amigável.
+        throw new Error(
+          `Resposta não-JSON (Preview protegido?). HTTP ${res.status}.`,
+        );
       }
-    } catch {
-      setFeedback("Erro de rede. Verifique a ligação e tente de novo.");
+
+      const data = await res.json();
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || `HTTP ${res.status}`);
+      }
+
+      // SUCESSO
+      setFeedback("Recebido! Entraremos em contacto em breve.");
+      e.currentTarget.reset();
+    } catch (err) {
+      // Se salvou mas proteção trocou a resposta, cairá aqui.
+      setFeedback(
+        "Erro de rede. Se estiver num Preview protegido do Vercel, abra o preview e aplique o bypass ou desative a proteção temporariamente.",
+      );
     } finally {
       setSending(false);
     }
