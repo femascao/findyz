@@ -130,3 +130,19 @@ model ContactInterest {
   message   String?
   createdAt DateTime @default(now())
 }
+
+model UserProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  displayName String?
+  headline    String?
+  bio         String?
+  location    String?
+  sectors     String[] @default([])
+  regions     String[] @default([])
+  sizeMin     Int?
+  sizeMax     Int?
+  public      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

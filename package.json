@@ -11,10 +11,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.33.4",
     "@prisma/client": "^5.18.0",
     "framer-motion": "^12.23.11",
     "lucide-react": "^0.276.0",
-    "next": "14.1.0",
+    "next": "^14.2.25",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "resend": "^6.1.2",
@@ -33,4 +34,9 @@
       "prettier-plugin-tailwindcss"
     ]
   }
+
+  "engines": {
+  "node": ">=20 <21"
+}
+
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Briefcase,
@@ -26,6 +26,11 @@ import {
  * - Paleta e logo preservados
  */
 export default function Page() {
+  const [year, setYear] = useState("");
+  useEffect(() => {
+    setYear(String(new Date().getFullYear()));
+  }, []);
+
   // --- ESTADOS DO SIMULADOR ---
   const [valuation, setValuation] = useState(null);
   const [valSending, setValSending] = useState(false);
@@ -140,7 +145,7 @@ export default function Page() {
 
   const Card = ({ children, className = "" }) => (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
@@ -206,7 +211,7 @@ export default function Page() {
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-2 md:py-28">
             <div>
               <motion.h1
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="text-4xl font-extrabold leading-tight text-[color:var(--brand-primary)] md:text-5xl"
@@ -731,9 +736,8 @@ export default function Page() {
               width={120}
               height={50}
             />
-            <span className="text-sm text-gray-600">
-              © {new Date().getFullYear()} Findyz. Todos os direitos
-              reservados.
+            <span className="text-sm text-gray-600" suppressHydrationWarning>
+              © {year} Findyz. Todos os direitos reservados.
             </span>
           </div>
           <div className="flex gap-4 text-sm text-gray-600">
