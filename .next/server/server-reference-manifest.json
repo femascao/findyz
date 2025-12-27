@@ -1,0 +1,62 @@
+{
+  "node": {
+    "b4e37638d891cbd3ee9cf9055dca46e2111d2db5": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fserver%2Fkeyless-custom-headers.js%22%2C%5B%22formatMetadataHeaders%22%2C%22collectKeylessMetadata%22%5D%5D%2C%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%22createOrReadKeylessAction%22%2C%22detectKeylessEnvDriftAction%22%2C%22syncKeylessConfigAction%22%2C%22deleteKeylessAction%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "rsc"
+      }
+    },
+    "fe689847394fd43aa868222a07e5daabc30df28a": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fserver%2Fkeyless-custom-headers.js%22%2C%5B%22formatMetadataHeaders%22%2C%22collectKeylessMetadata%22%5D%5D%2C%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%22createOrReadKeylessAction%22%2C%22detectKeylessEnvDriftAction%22%2C%22syncKeylessConfigAction%22%2C%22deleteKeylessAction%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "rsc"
+      }
+    },
+    "09a20f3945c1539b7c4a5e59e9f0293cc67496f5": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fserver%2Fkeyless-custom-headers.js%22%2C%5B%22formatMetadataHeaders%22%2C%22collectKeylessMetadata%22%5D%5D%2C%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%22createOrReadKeylessAction%22%2C%22detectKeylessEnvDriftAction%22%2C%22syncKeylessConfigAction%22%2C%22deleteKeylessAction%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "rsc"
+      }
+    },
+    "31a95eac56cdb806cc66cff88caebf4e743e3ff4": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fserver%2Fkeyless-custom-headers.js%22%2C%5B%22formatMetadataHeaders%22%2C%22collectKeylessMetadata%22%5D%5D%2C%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%22createOrReadKeylessAction%22%2C%22detectKeylessEnvDriftAction%22%2C%22syncKeylessConfigAction%22%2C%22deleteKeylessAction%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "rsc"
+      }
+    },
+    "4f86b5078d797f8bb04e1ee982b018c8389a17e4": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fserver%2Fkeyless-custom-headers.js%22%2C%5B%22formatMetadataHeaders%22%2C%22collectKeylessMetadata%22%5D%5D%2C%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%22createOrReadKeylessAction%22%2C%22detectKeylessEnvDriftAction%22%2C%22syncKeylessConfigAction%22%2C%22deleteKeylessAction%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "rsc"
+      }
+    },
+    "b0564441e69c8241e77be920a9bc1c5d102d5f74": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fserver%2Fkeyless-custom-headers.js%22%2C%5B%22formatMetadataHeaders%22%2C%22collectKeylessMetadata%22%5D%5D%2C%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%22createOrReadKeylessAction%22%2C%22detectKeylessEnvDriftAction%22%2C%22syncKeylessConfigAction%22%2C%22deleteKeylessAction%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "rsc"
+      }
+    },
+    "9e1848f0325585a61ecc72829d54a851b708071e": {
+      "workers": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Ffernandooliveira%2FDownloads%2Ffindyz-site-final%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/(auth)/sign-in/[[...sign-in]]/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "MNIk8+6XgpvkeyCf34SbLo8fazLqEZeKQohDpwLu+JM="
+}
