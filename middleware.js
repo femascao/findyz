@@ -1,18 +1,40 @@
-// middleware.js (JS)
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware({
-  // Estas rotas NÃO exigem login
-  publicRoutes: [
-    "/", // landing
-    "/api/health",
-    "/api/valuation",
-    "/api/register-interest",
-    "/admin/interests", // deixe público se quiser apenas token na chamada X-ADMIN-TOKEN
-  ],
+const isPublicRouteMatcher = createRouteMatcher([
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/u(.*)",
+
+  // APIs públicas existentes
+  "/api/health",
+  "/api/valuation",
+  "/api/register-interest",
+
+  // manter interests público por enquanto
+  "/admin/interests",
+]);
+
+export default clerkMiddleware(async (auth, req) => {
+  const pathname = req.nextUrl.pathname;
+
+  // ✅ Root público (sem quebrar o matcher)
+  const isPublic = pathname === "/" || isPublicRouteMatcher(req);
+
+  if (!isPublic) {
+    await auth.protect();
+  }
 });
 
 export const config = {
-  // Padrão recomendado pela Clerk para App Router
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: [
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    "/(api|trpc)(.*)",
+  ],
 };
+
+
+
+
+
+
+
